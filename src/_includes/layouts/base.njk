@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		{% include "partials/meta-info.html" %}
+		{%- set css %}
+		{% include 'css/critical.css' %}
+		{% endset %}
+		{# Add facility for pages to delare an array of critical styles #} {% if
+		pageCriticalStyles %} {% for item in pageCriticalStyles %}
+		{%- set css %}
+		{% include item %}
+		{% endset %}
+		{% endfor %} {% endif %}
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="side-bar">{% include "partials/side-bar.html" %}</div>
+			<div class="main-content">
+				{% block content %} {{ content | safe }} {% endblock %}
+			</div>
+		</div>
+	</body>
+</html>

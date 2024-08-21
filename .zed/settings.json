@@ -1,0 +1,18 @@
+{
+	"languages": {
+		"njk": {
+			"format_on_save": {
+				"external": {
+					"command": "npx",
+					"arguments": [
+						"prettier",
+						"--plugin=prettier-plugin-jinja-template",
+						"--parser=jinja-template",
+						"--stdin-filepath",
+						"{buffer_path}"
+					]
+				}
+			}
+		}
+	}
+}

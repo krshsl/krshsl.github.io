@@ -1,0 +1,16 @@
+{
+	"items": [
+		{
+			"text": "About",
+			"url": "/"
+		},
+		{
+			"text": "Projects",
+			"url": "/project/"
+		},
+		{
+			"text": "Resume",
+			"url": "/resume/"
+		}
+	]
+}
