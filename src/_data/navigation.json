@@ -1,16 +1,16 @@
 {
-	"items": [
-		{
-			"text": "About",
-			"url": "/"
-		},
-		{
-			"text": "Projects",
-			"url": "/project/"
-		},
-		{
-			"text": "Resume",
-			"url": "/resume/"
-		}
-	]
+  "items": [
+    {
+      "text": "About",
+      "url": "/"
+    },
+    {
+      "text": "Projects",
+      "url": "/projects/"
+    },
+    {
+      "text": "Resume",
+      "url": "/resume/"
+    }
+  ]
 }
