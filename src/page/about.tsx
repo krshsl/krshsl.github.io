@@ -19,12 +19,8 @@ export const About: React.FC = () => {
       <div className="bg-[#f7941d] p-4 rounded-lg text-black mt-6">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
           <div className="nes-container is-dark with-title mt-4 bg-pattern-dotted">
-            <p className="title text-white">Photo</p>
-            <img
-              src={aboutData.avatar}
-              alt="Avatar"
-              className="w-22 h-22 object-cover pixelated-image"
-            />
+            {/*Copyright Nintendo*/}
+            <i className="nes-mario"></i>
           </div>
           <div className="flex-grow w-full space-y-2">
             <div className="bg-white py-3 px-2 nes-field flex justify-between items-center">
