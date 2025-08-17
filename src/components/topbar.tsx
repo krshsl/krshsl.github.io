@@ -1,5 +1,6 @@
 import type React from "react";
 import { useEffect, useState } from "react";
+import BatteryIcon from "./battery";
 
 export const TopBar: React.FC = () => {
   const [time, setTime] = useState(new Date());
@@ -32,6 +33,7 @@ export const TopBar: React.FC = () => {
         <a href="mailto:krishna.sl@rutgers.edu">
           <i className="nes-icon gmail"></i>
         </a>
+        <BatteryIcon />
       </div>
     </div>
   );
