@@ -1,10 +1,7 @@
 import type React from "react";
 import { useEffect, useState } from "react";
 
-import { useOptions } from "../provider/options";
-
 export const TopBar: React.FC = () => {
-  const getFontClass = useOptions();
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -14,9 +11,9 @@ export const TopBar: React.FC = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 bg-[#212529] text-white p-2 flex justify-between items-center z-50 border-b-4 border-gray-600">
-      <div className={`${getFontClass}`}>
+      <span>
         {time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-      </div>
+      </span>
       <div className="flex items-center space-x-4">
         <a
           href="https://www.linkedin.com/in/krshsl"

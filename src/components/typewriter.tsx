@@ -11,6 +11,11 @@ export const Typewriter: React.FC<{
   const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
+    setDisplayText("");
+    setIsTyping(true);
+  }, [text]);
+
+  useEffect(() => {
     const timerId = setTimeout(() => {
       const len = displayText.length;
       if (isTyping && len < text.length) {
@@ -23,7 +28,7 @@ export const Typewriter: React.FC<{
     return () => {
       clearTimeout(timerId);
     };
-  }, [displayText, getSpeed, isTyping, text]);
+  }, [displayText, text, getSpeed, isTyping]);
 
   const handleSkip = () => {
     setDisplayText(text);
