@@ -1,42 +1,105 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&family=Silkscreen&family=VT323&display=swap");
+
+@import url("https://unpkg.com/nes.css@latest/css/nes.min.css");
+
+body {
+  background-color: #212529;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.font-press-start {
+  font-family: "Press Start 2P", monospace;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.font-vt323 .title {
+  font-size: 2rem !important;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.font-vt323 {
+  font-family: "VT323", monospace;
+  font-size: 2rem;
+  line-height: 0.8 !important;
+  transform: scaleY(0.9);
+  transform-origin: top;
+}
+.font-pixelify-sans {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1.5rem;
+}
+.font-silkscreen {
+  font-family: "Silkscreen", sans-serif;
+  font-size: 1.25rem;
+}
+:is(.font-pixelify-sans, .font-silkscreen) .title {
+  font-size: 1.5rem !important;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
+.radio-label {
+  display: flex;
+  align-items: center;
+}
+.nes-radio:checked + span::before {
+  top: 10px;
+}
+.font-press-start .nes-radio:checked + span::before {
+  top: 2px;
+}
+.font-vt323 .nes-radio:checked + span::before {
+  top: 3px;
+}
+
+.nes-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-pattern-dotted {
+  background-image: radial-gradient(#6d6d6d 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+.bg-pattern-block {
+  background-image:
+    linear-gradient(45deg, #4a4a4a 25%, transparent 25%),
+    linear-gradient(-45deg, #4a4a4a 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #4a4a4a 75%),
+    linear-gradient(-45deg, transparent 75%, #4a4a4a 75%);
+  background-size: 20px 20px;
+  background-color: #333;
+}
+
+@keyframes spin-nes {
+  100% {
     transform: rotate(360deg);
   }
 }
+.animate-spin-nes {
+  animation: spin-nes 1.5s linear infinite;
+}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.pixelated-image {
+  image-rendering: pixelated;
+}
+
+.nes-ash.is-medium {
+  transform: scale(0.56);
+  margin-top: -24px;
+  margin-bottom: -24px;
+}
+
+@media (min-width: 1024px) {
+  .grid:has(> .nes-container.with-title) {
+    grid-template-columns: 3fr 2fr;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
