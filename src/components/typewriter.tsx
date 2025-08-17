@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
+import type React from "react";
+import { useEffect, useState } from "react";
+
+import { useOptions } from "../provider/options";
 
 export const Typewriter: React.FC<{
   text: string;
-  speed: "slow" | "mid" | "fast";
-}> = ({ text, speed }) => {
+}> = ({ text }) => {
+  const { getSpeed } = useOptions();
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
-  const speedMap: { slow: number; mid: number; fast: number } = {
-    slow: 80,
-    mid: 40,
-    fast: 15,
-  };
-  const delay = speedMap[speed] || 40;
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -21,12 +18,12 @@ export const Typewriter: React.FC<{
       } else {
         setIsTyping(false);
       }
-    }, delay);
+    }, getSpeed());
 
     return () => {
       clearTimeout(timerId);
     };
-  }, [displayText, delay, speed, isTyping, text]);
+  }, [displayText, getSpeed, isTyping, text]);
 
   const handleSkip = () => {
     setDisplayText(text);

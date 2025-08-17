@@ -1,9 +1,9 @@
 import type React from "react";
 import { useMemo, useState } from "react";
-import { CloseButton } from "../components/closeButton";
 import { useNavigate } from "react-router";
+
+import { CloseButton } from "../components/closeButton";
 import { Typewriter } from "../components/typewriter";
-import type { SpeedOptions } from "../interfaces/options";
 
 interface dexData {
   id: number;
@@ -12,15 +12,14 @@ interface dexData {
   role?: string;
   duration?: string;
   description: string;
-  tech?: string;
+  tech?: string[];
   icon: string;
 }
 
 export const DexListScreen: React.FC<{
-  title: string;
-  data: Array<dexData>;
-  textSpeed: SpeedOptions;
-}> = ({ title, data, textSpeed }) => {
+  title: "Experience" | "Projects";
+  data: dexData[];
+}> = ({ title, data }) => {
   const [selectedItem, setSelectedItem] = useState<dexData | null>(null);
   const memoizedDescription = useMemo(
     () => (selectedItem ? selectedItem.description : ""),
@@ -97,7 +96,7 @@ export const DexListScreen: React.FC<{
                   </p>
                 )}
                 <div className="nes-container is-dark is-rounded mt-2 min-h-[8rem]">
-                  <Typewriter text={memoizedDescription} speed={textSpeed} />
+                  <Typewriter text={memoizedDescription} />
                 </div>
               </div>
             </>

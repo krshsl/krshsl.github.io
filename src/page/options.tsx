@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Typewriter } from "../components/typewriter";
 import { useNavigate } from "react-router";
+
 import { CloseButton } from "../components/closeButton";
+import { Typewriter } from "../components/typewriter";
 import {
   FONT_OPTIONS,
   SIZE_OPTIONS,
@@ -14,17 +15,16 @@ import type {
   SizeOptions,
   SpeedOptions,
 } from "../interfaces/options";
+import { useOptions } from "../provider/options";
 
-export const Options: React.FC<{
-  currentOption: OptionsType;
-  updateOptions: (option: OptionsType) => void;
-}> = ({ currentOption, updateOptions }) => {
-  const [tempOptions, setTempOptions] = useState<OptionsType>(currentOption);
-  const [typewriterKey, setTypewriterKey] = useState(0);
+export const Options: React.FC = () => {
+  const { options, updateOptions } = useOptions();
+  const [tempOptions, setTempOptions] = useState<OptionsType>(options);
   const navigate = useNavigate();
 
-  const handleConfirm = () => {
-    updateOptions(tempOptions!);
+  const handleNavigate = (isConfirm: boolean) => {
+    if (isConfirm) updateOptions(tempOptions);
+    else updateOptions(options);
     navigate("/");
   };
 
@@ -33,7 +33,6 @@ export const Options: React.FC<{
     value: SpeedOptions | SizeOptions | FontOptions,
   ) => {
     setTempOptions((prev) => ({ ...prev, [option]: value }));
-    setTypewriterKey((prev) => prev + 1);
   };
 
   const getFontName = (font: FontOptions) => {
@@ -53,11 +52,7 @@ export const Options: React.FC<{
   return (
     <div className="relative nes-container with-title is-dark bg-pattern-block">
       <p className="title">Options</p>
-      <CloseButton
-        onClick={() => {
-          navigate("/");
-        }}
-      />
+      <CloseButton onClick={() => handleNavigate(false)} />
       <div className="p-4 pt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="space-y-6">
           <section className="flex flex-col sm:flex-row justify-between sm:items-center">
@@ -119,11 +114,7 @@ export const Options: React.FC<{
             <div>
               <p className="text mb-2">Text Speed:</p>
               <div className="nes-container is-dark is-rounded h-full">
-                <Typewriter
-                  key={typewriterKey}
-                  text=" The quick brown fox jumps over the lazy dog."
-                  speed={tempOptions.speed}
-                />
+                <Typewriter text="The quick brown fox jumps over the lazy dog." />
               </div>
             </div>
             <div>
@@ -149,7 +140,7 @@ export const Options: React.FC<{
         <button
           type="button"
           className="nes-btn is-success"
-          onClick={handleConfirm}
+          onClick={() => handleNavigate(true)}
         >
           Confirm
         </button>

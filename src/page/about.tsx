@@ -1,13 +1,11 @@
-import { useNavigate } from "react-router";
-import { aboutData } from "../constants/about";
 import type React from "react";
+import { useNavigate } from "react-router";
+
+import { aboutData } from "../constants/about";
 import { CloseButton } from "../components/closeButton";
-import type { SpeedOptions } from "../interfaces/options";
 import { Typewriter } from "../components/typewriter";
 
-export const TrainerCard: React.FC<{ textSpeed: SpeedOptions }> = ({
-  textSpeed,
-}) => {
+export const About: React.FC = () => {
   const navigate = useNavigate();
 
   return (
@@ -42,7 +40,7 @@ export const TrainerCard: React.FC<{ textSpeed: SpeedOptions }> = ({
         <div className="nes-container is-dark with-title mt-4 bg-pattern-dotted">
           <p className="title">Bio</p>
           <div className="text-sm min-h-[6rem] overflow-y-auto">
-            <Typewriter text={aboutData.bio} speed={textSpeed} />
+            <Typewriter text={aboutData.bio} />
           </div>
         </div>
       </div>
