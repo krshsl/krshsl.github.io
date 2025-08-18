@@ -11,7 +11,7 @@ export const TopBar: React.FC = () => {
   }, [time]);
 
   return (
-    <div className="fixed top-0 left-0 right-0 bg-[#212529] text-white p-2 flex justify-between items-center z-50 border-b-4 border-gray-600">
+    <div className="fixed top-0 left-0 right-0 bg-[#212529] text-white p-2 flex justify-between items-center z-50 border-b-4 border-gray-600 cursor">
       <span>
         {time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
       </span>

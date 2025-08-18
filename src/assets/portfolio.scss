@@ -1,4 +1,5 @@
-@use "./nes" as *;
+@use "nes.css/scss/nes.scss" as *;
+@use "thunder";
 
 .menu-button {
   @extend .nes-btn;
