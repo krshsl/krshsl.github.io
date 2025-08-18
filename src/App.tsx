@@ -5,6 +5,7 @@ import { OptionsProvider } from "./components/options";
 import Router from "./router/routes";
 
 import "./App.css";
+import "./assets/portfolio.scss";
 
 const App: React.FC = () => {
   return (

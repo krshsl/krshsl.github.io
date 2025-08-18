@@ -41,9 +41,9 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
     );
 
   const screenMap: Record<SizeOptions, string> = {
-    small: "max-w-4xl",
-    medium: "max-w-6xl",
-    large: "max-w-full",
+    small: "w-[800px]",
+    medium: "w-[1024px]",
+    large: "w-[1280px]",
   };
 
   const speedMap: Record<SpeedOptions, number> = {

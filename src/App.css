@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&family=Silkscreen&family=VT323&display=swap");
 
 @import "tailwindcss";
-@import "nes.css/css/nes.min.css";
 
 .font-press-start {
   font-family: "Press Start 2P", monospace;
@@ -106,45 +105,6 @@
   transform: scale(0.56);
   margin-top: -24px;
   margin-bottom: -24px;
-}
-
-.pixel-btn {
-  font-family: "Press Start 2P", monospace;
-  background: #108de0;
-  color: #fff;
-  border-bottom: 4px solid #006bb3;
-  border-right: 4px solid #006bb3;
-  padding: 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  position: relative;
-}
-
-.pixel-btn:focus {
-  outline: none;
-}
-
-.pixel-menu {
-  font-family: "Press Start 2P", monospace;
-  background: #fff;
-  color: #212529;
-  border-bottom: 4px solid #adafbc;
-  border-right: 4px solid #adafbc;
-  margin-top: -4px;
-  z-index: 50;
-}
-
-.pixel-menu li {
-  border-bottom: 2px solid #555;
-  padding: 6px 8px;
-  cursor: pointer;
-}
-
-.pixel-menu li:hover {
-  background: #108de0;
-  color: #fff;
-  border-bottom: 4px solid #006bb3;
-  border-right: 4px solid #006bb3;
 }
 
 @media (min-width: 1024px) {

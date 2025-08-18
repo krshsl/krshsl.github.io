@@ -6,7 +6,7 @@ import { TopBar } from "../components/topbar";
 import { useOptions } from "../provider/options";
 
 const Layout: React.FC = () => {
-  const { getFontClass, getScreenClass } = useOptions();
+  const { getScreenClass, getFontClass } = useOptions();
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
 
@@ -20,22 +20,31 @@ const Layout: React.FC = () => {
     return () => clearTimeout(timerId);
   }, [location]);
 
-  if (isLoading) return <LoadingScreen />;
-  else
-    return (
-      <>
-        <div
-          className={`${getFontClass()} nes-cursor bg-pattern-dotted min-h-screen min-w-screen flex items-center`}
+  const isSmallScreen = (breakpoint: number = 768): boolean => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+    return window.innerWidth < breakpoint;
+  };
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
+  return (
+    <>
+      <div
+        className={`${getFontClass()} nes-cursor bg-pattern-dotted min-h-screen min-w-screen flex items-center`}
+      >
+        <TopBar />
+        <main
+          className={`justify-center mx-auto p-4 pt-20 transition-all duration-500 ${isSmallScreen() ? "w-full" : getScreenClass()}`}
         >
-          <TopBar />
-          <main
-            className={`justify-center mx-auto p-4 pt-20 transition-all duration-500 ${getScreenClass()}`}
-          >
-            <Outlet />
-          </main>
-        </div>
-      </>
-    );
+          <Outlet />
+        </main>
+      </div>
+    </>
+  );
 };
 
 export default Layout;

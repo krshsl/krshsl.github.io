@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
 
 import { CloseButton } from "../components/closeButton";
 import { Typewriter } from "../components/typewriter";
+import { PixelDropdown } from "../components/dropdown";
 import { SIZE_OPTIONS, SPEED_OPTIONS } from "../interfaces/options";
 import type {
   FontOptions,
@@ -11,8 +13,6 @@ import type {
   SpeedOptions,
 } from "../interfaces/options";
 import { useOptions } from "../provider/options";
-import { PixelDropdown } from "../components/dropdown";
-import { useEffect, useState } from "react";
 
 export const Options: React.FC = () => {
   const { options, updateOptions } = useOptions();
@@ -39,6 +39,13 @@ export const Options: React.FC = () => {
     updateOptions({ ...options, [option]: value }, false);
   };
 
+  const isSmallScreen = (breakpoint: number = 768): boolean => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+    return window.innerWidth < breakpoint;
+  };
+
   return (
     <div className="relative nes-container with-title is-dark bg-pattern-block">
       <p className="title">Options</p>
@@ -63,23 +70,25 @@ export const Options: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex justify-between items-center">
-          <p>SCREEN SIZE</p>
-          <div className="flex items-center">
-            <span className="nes-text is-primary">&lt;</span>
-            {SIZE_OPTIONS.map((size) => (
-              <button
-                key={size}
-                type="button"
-                className={`nes-btn mx-2 ${options.size === size ? "is-primary" : ""}`}
-                onClick={() => handleOptionChange("size", size)}
-              >
-                {size.toUpperCase()}
-              </button>
-            ))}
-            <span className="nes-text is-primary">&gt;</span>
+        {!isSmallScreen() && (
+          <div className="flex justify-between items-center">
+            <p>SCREEN SIZE</p>
+            <div className="flex items-center">
+              <span className="nes-text is-primary">&lt;</span>
+              {SIZE_OPTIONS.map((size) => (
+                <button
+                  key={size}
+                  type="button"
+                  className={`nes-btn mx-2 ${options.size === size ? "is-primary" : ""}`}
+                  onClick={() => handleOptionChange("size", size)}
+                >
+                  {size.toUpperCase()}
+                </button>
+              ))}
+              <span className="nes-text is-primary">&gt;</span>
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="flex justify-between items-center">
           <p>FONT STYLE</p>
@@ -90,8 +99,8 @@ export const Options: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex justify-between mt-6">
-        <div className="p-2 nes-container is-dark bg-pattern-dotted">
+      <div className="flex justify-center mt-6">
+        <div className="p-2 nes-container is-dark bg-pattern-dotted w-full">
           <div className="space-y-4 p-4">
             <div>
               <p className="text mb-2">Preview:</p>

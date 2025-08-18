@@ -1,0 +1,9 @@
+@use "./nes" as *;
+
+.menu-button {
+  @extend .nes-btn;
+
+  &:hover {
+    @extend .is-success;
+  }
+}

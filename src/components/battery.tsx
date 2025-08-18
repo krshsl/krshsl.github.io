@@ -20,12 +20,13 @@ const BatteryIcon: React.FC = () => {
     width,
     height,
   }: PixelatedBarProps): JSX.Element => (
-    <g fill="green">
+    <g fill="#76c442">
       <rect x={x + 1} y={y} width={width - 2} height={1} />
       <rect x={x} y={y + 1} width={width} height={height - 2} />
       <rect x={x + 1} y={y + height - 1} width={width - 2} height={1} />
     </g>
   );
+
   return (
     <svg
       width="20"
