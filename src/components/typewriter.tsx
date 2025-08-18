@@ -6,14 +6,14 @@ import { useOptions } from "../provider/options";
 export const Typewriter: React.FC<{
   text: string;
 }> = ({ text }) => {
-  const { getSpeed } = useOptions();
+  const { options, getSpeed } = useOptions();
   const [displayText, setDisplayText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
     setDisplayText("");
     setIsTyping(true);
-  }, [text]);
+  }, [text, options]);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -28,7 +28,7 @@ export const Typewriter: React.FC<{
     return () => {
       clearTimeout(timerId);
     };
-  }, [displayText, text, getSpeed, isTyping]);
+  }, [displayText, isTyping]);
 
   const handleSkip = () => {
     setDisplayText(text);

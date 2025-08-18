@@ -9,6 +9,7 @@ export const FONT_OPTIONS = [
   "pixelify-sans",
   "silkscreen",
   "press-start",
+  "kongtext",
 ] as const;
 export type FontOptions = (typeof FONT_OPTIONS)[number];
 

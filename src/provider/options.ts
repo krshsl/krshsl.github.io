@@ -4,7 +4,7 @@ import type { OptionsType } from "../interfaces/options";
 
 interface OptionsProviderState {
   options: OptionsType;
-  updateOptions: (newOptions: OptionsType) => void;
+  updateOptions: (newOptions: OptionsType, persist: boolean) => void;
   getFontClass: () => string;
   getScreenClass: () => string;
   getSpeed: () => number;

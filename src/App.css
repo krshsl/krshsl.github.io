@@ -3,16 +3,10 @@
 @import "tailwindcss";
 @import "nes.css/css/nes.min.css";
 
-body {
-  background-color: #212529;
-}
-
 .font-press-start {
   font-family: "Press Start 2P", monospace;
 }
-.font-vt323 .title {
-  font-size: 2rem !important;
-}
+
 .font-vt323 {
   font-family: "VT323", monospace;
   font-size: 2rem;
@@ -20,30 +14,44 @@ body {
   transform: scaleY(0.9);
   transform-origin: top;
 }
+
 .font-pixelify-sans {
   font-family: "Pixelify Sans", sans-serif;
   font-size: 1.5rem;
 }
+
 .font-silkscreen {
   font-family: "Silkscreen", sans-serif;
   font-size: 1.25rem;
 }
+
+.font-kongtext {
+  font-family: "kongtext", monospace;
+}
+
+.font-vt323 .title {
+  font-size: 2rem !important;
+}
+
 :is(.font-pixelify-sans, .font-silkscreen) .title {
   font-size: 1.5rem !important;
+}
+
+.font-press-start .nes-radio:checked + span::before {
+  top: 2px;
+}
+
+.font-vt323 .nes-radio:checked + span::before {
+  top: 3px;
 }
 
 .radio-label {
   display: flex;
   align-items: center;
 }
+
 .nes-radio:checked + span::before {
   top: 10px;
-}
-.font-press-start .nes-radio:checked + span::before {
-  top: 2px;
-}
-.font-vt323 .nes-radio:checked + span::before {
-  top: 3px;
 }
 
 .nes-btn {
@@ -56,6 +64,7 @@ body {
   background-image: radial-gradient(#6d6d6d 1px, transparent 1px);
   background-size: 10px 10px;
 }
+
 .bg-pattern-block {
   background-image:
     linear-gradient(45deg, #4a4a4a 25%, transparent 25%),
@@ -97,6 +106,45 @@ body {
   transform: scale(0.56);
   margin-top: -24px;
   margin-bottom: -24px;
+}
+
+.pixel-btn {
+  font-family: "Press Start 2P", monospace;
+  background: #108de0;
+  color: #fff;
+  border-bottom: 4px solid #006bb3;
+  border-right: 4px solid #006bb3;
+  padding: 8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+}
+
+.pixel-btn:focus {
+  outline: none;
+}
+
+.pixel-menu {
+  font-family: "Press Start 2P", monospace;
+  background: #fff;
+  color: #212529;
+  border-bottom: 4px solid #adafbc;
+  border-right: 4px solid #adafbc;
+  margin-top: -4px;
+  z-index: 50;
+}
+
+.pixel-menu li {
+  border-bottom: 2px solid #555;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.pixel-menu li:hover {
+  background: #108de0;
+  color: #fff;
+  border-bottom: 4px solid #006bb3;
+  border-right: 4px solid #006bb3;
 }
 
 @media (min-width: 1024px) {
