@@ -5,7 +5,7 @@ import { LoadingScreen } from "../components/loading";
 import { TopBar } from "../components/topbar";
 import { useOptions } from "../provider/options";
 
-const Main: React.FC = () => {
+const Layout: React.FC = () => {
   const { getFontClass, getScreenClass } = useOptions();
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
@@ -38,4 +38,4 @@ const Main: React.FC = () => {
     );
 };
 
-export default Main;
+export default Layout;

@@ -6,12 +6,12 @@ import { DexListScreen } from "../page/dexScreen";
 import { Menu } from "../page/menu";
 import { Options } from "../page/options";
 import { experienceData, projectData } from "../constants/about";
-import Main from "../layout/main";
+import Layout from "../layout/default";
 
 const Router: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Main />}>
+      <Route path="/" element={<Layout />}>
         <Route path="" element={<Menu />} />
         <Route path="about" element={<About />} />
         <Route
