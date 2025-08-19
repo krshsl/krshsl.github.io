@@ -15,7 +15,7 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
   const defaultOptions: OptionsType = {
     speed: "mid",
     size: "medium",
-    font: "press-start",
+    font: "kongtext",
   };
 
   const [options, setOptions] = useState<OptionsType>(() => {
