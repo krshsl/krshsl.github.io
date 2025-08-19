@@ -15,8 +15,10 @@ export type FontOptions = (typeof FONT_OPTIONS)[number];
 
 export interface OptionsType {
   speed: SpeedOptions;
-  font: FontOptions;
   size: SizeOptions;
+  font: FontOptions;
 }
 export const OPTION_KEYS = ["speed", "font", "size"] as const;
 export type OptionKeys = (typeof OPTION_KEYS)[number];
+
+export type AllOptions = SpeedOptions | SizeOptions | FontOptions;

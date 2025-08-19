@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   FONT_OPTIONS,
@@ -29,6 +29,17 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
       );
       return defaultOptions;
     }
+  });
+
+  const [isSmall, setIsSmall] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsSmall(window.innerWidth < 768);
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
   });
 
   const fontMap: Record<FontOptions, `font-${FontOptions}`> =
@@ -66,6 +77,7 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
   const value = {
     options,
     updateOptions,
+    isSmallScreen: isSmall,
     getFontClass,
     getScreenClass,
     getSpeed,

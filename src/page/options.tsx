@@ -1,10 +1,15 @@
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 
-import { CloseButton } from "../components/closeButton";
+import { CloseButton } from "../components/closebutton";
 import { Typewriter } from "../components/typewriter";
 import { PixelDropdown } from "../components/dropdown";
-import { SIZE_OPTIONS, SPEED_OPTIONS } from "../interfaces/options";
+import { OptionSelector } from "../components/optionselector";
+import {
+  FONT_OPTIONS,
+  SIZE_OPTIONS,
+  SPEED_OPTIONS,
+} from "../interfaces/options";
 import type {
   FontOptions,
   OptionKeys,
@@ -15,13 +20,13 @@ import type {
 import { useOptions } from "../provider/options";
 
 export const Options: React.FC = () => {
-  const { options, updateOptions } = useOptions();
+  const { options, updateOptions, isSmallScreen } = useOptions();
   const [defaultOptions, setDefault] = useState<OptionsType | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (defaultOptions === null) setDefault(options);
-  });
+  }, [options, defaultOptions]);
 
   const handleNavigate = (isConfirm: boolean) => {
     if (isConfirm) {
@@ -39,72 +44,57 @@ export const Options: React.FC = () => {
     updateOptions({ ...options, [option]: value }, false);
   };
 
-  const isSmallScreen = (breakpoint: number = 768): boolean => {
-    if (typeof window === "undefined") {
-      return false;
-    }
-    return window.innerWidth < breakpoint;
-  };
-
   return (
     <div className="relative nes-container with-title is-dark bg-pattern-block">
       <p className="title">Options</p>
       <CloseButton onClick={() => handleNavigate(false)} />
 
-      <div className="p-4 pt-10 space-y-6 nes-container is-dark bg-pattern-dotted">
-        <div className="flex justify-between items-center">
-          <p>TEXT SPEED</p>
-          <div className="flex items-center">
-            <span className="nes-text is-primary">&lt;</span>
-            {SPEED_OPTIONS.map((speed) => (
-              <button
-                key={speed}
-                type="button"
-                className={`nes-btn mx-2 ${options.speed === speed ? "is-primary" : ""}`}
-                onClick={() => handleOptionChange("speed", speed)}
-              >
-                {speed.toUpperCase()}
-              </button>
-            ))}
-            <span className="nes-text is-primary">&gt;</span>
-          </div>
-        </div>
-
-        {!isSmallScreen() && (
-          <div className="flex justify-between items-center">
-            <p>SCREEN SIZE</p>
-            <div className="flex items-center">
-              <span className="nes-text is-primary">&lt;</span>
-              {SIZE_OPTIONS.map((size) => (
-                <button
-                  key={size}
-                  type="button"
-                  className={`nes-btn mx-2 ${options.size === size ? "is-primary" : ""}`}
-                  onClick={() => handleOptionChange("size", size)}
-                >
-                  {size.toUpperCase()}
-                </button>
-              ))}
-              <span className="nes-text is-primary">&gt;</span>
-            </div>
-          </div>
+      <div className="p-4 pt-10 space-y-8 nes-container is-dark bg-pattern-dotted">
+        {isSmallScreen ? (
+          <PixelDropdown
+            label="TEXT SPEED"
+            options={SPEED_OPTIONS}
+            value={options.speed}
+            onChange={(value) =>
+              handleOptionChange("speed", value as SpeedOptions)
+            }
+          />
+        ) : (
+          <OptionSelector
+            label="TEXT SPEED"
+            options={SPEED_OPTIONS}
+            value={options.speed}
+            onChange={(value) =>
+              handleOptionChange("speed", value as SpeedOptions)
+            }
+          />
         )}
 
-        <div className="flex justify-between items-center">
-          <p>FONT STYLE</p>
-          <PixelDropdown
-            value={options.font}
-            onChange={(font) => handleOptionChange("font", font)}
+        {!isSmallScreen && (
+          <OptionSelector
+            label="SCREEN SIZE"
+            options={SIZE_OPTIONS}
+            value={options.size}
+            onChange={(value) =>
+              handleOptionChange("size", value as SizeOptions)
+            }
           />
-        </div>
+        )}
+
+        <PixelDropdown
+          label="FONT STYLE"
+          options={FONT_OPTIONS}
+          value={options.font}
+          onChange={(font) => handleOptionChange("font", font)}
+        />
       </div>
 
       <div className="flex justify-center mt-6">
         <div className="p-2 nes-container is-dark bg-pattern-dotted w-full">
-          <div className="space-y-4 p-4">
+          <div className="space-y-4 lg:p-4 mb-[1rem]!">
             <div>
               <p className="text mb-2">Preview:</p>
-              <div className="nes-container is-dark is-rounded h-full">
+              <div className="nes-container is-dark is-rounded min-h-[8rem] -m-[1rem]!">
                 <Typewriter text="The quick brown fox jumps over the lazy dog." />
               </div>
             </div>

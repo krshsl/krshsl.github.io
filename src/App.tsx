@@ -6,12 +6,15 @@ import Router from "./router/routes";
 
 import "./App.css";
 import "./assets/portfolio.scss";
+import LoadingScreen from "./components/loading";
 
 const App: React.FC = () => {
   return (
     <OptionsProvider>
       <BrowserRouter>
-        <Router />
+        <LoadingScreen>
+          <Router />
+        </LoadingScreen>
       </BrowserRouter>
     </OptionsProvider>
   );
