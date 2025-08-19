@@ -2,7 +2,7 @@ import type React from "react";
 import { useNavigate } from "react-router";
 
 import { aboutData } from "../constants/about";
-import { CloseButton } from "../components/closeButton";
+import { CloseButton } from "../components/closebutton";
 import { Typewriter } from "../components/typewriter";
 
 export const About: React.FC = () => {

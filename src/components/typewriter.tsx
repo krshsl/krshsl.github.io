@@ -7,19 +7,22 @@ export const Typewriter: React.FC<{
   text: string;
 }> = ({ text }) => {
   const { options, getSpeed } = useOptions();
-  const [displayText, setDisplayText] = useState("");
+  const [charIndex, setCharIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
-    setDisplayText("");
+    setCharIndex(0);
     setIsTyping(true);
   }, [text, options]);
 
   useEffect(() => {
+    if (!isTyping) {
+      return;
+    }
+
     const timerId = setTimeout(() => {
-      const len = displayText.length;
-      if (isTyping && len < text.length) {
-        setDisplayText(text.slice(0, len + 1));
+      if (isTyping && charIndex < text.length) {
+        setCharIndex(charIndex + 1);
       } else {
         setIsTyping(false);
       }
@@ -28,16 +31,16 @@ export const Typewriter: React.FC<{
     return () => {
       clearTimeout(timerId);
     };
-  }, [displayText, isTyping]);
+  }, [charIndex, isTyping, text, getSpeed]);
 
   const handleSkip = () => {
-    setDisplayText(text);
+    setCharIndex(text.length);
     setIsTyping(false);
   };
 
   return (
-    <div className="relative">
-      <p>{displayText}</p>
+    <div className="relative whitespace-pre-wrap">
+      <p>{text.slice(0, charIndex)}</p>
       {isTyping && (
         <button
           onClick={handleSkip}

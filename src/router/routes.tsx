@@ -2,11 +2,13 @@ import type React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { About } from "../page/about";
-import { DexListScreen } from "../page/dexScreen";
 import { Menu } from "../page/menu";
 import { Options } from "../page/options";
-import { experienceData, projectData } from "../constants/about";
 import Layout from "../layout/default";
+import { ExperienceDetails } from "../components/experience";
+import { DexScreen } from "../page/dexScreen";
+import { ProjectDetails } from "../components/projects";
+import { experienceData, projectData } from "../constants/about";
 
 const Router: React.FC = () => {
   return (
@@ -16,11 +18,23 @@ const Router: React.FC = () => {
         <Route path="about" element={<About />} />
         <Route
           path="experience"
-          element={<DexListScreen title="Experience" data={experienceData} />}
+          element={
+            <DexScreen
+              title="Experience"
+              data={experienceData}
+              DetailsComponent={ExperienceDetails}
+            />
+          }
         />
         <Route
           path="projects"
-          element={<DexListScreen title="Projects" data={projectData} />}
+          element={
+            <DexScreen
+              title="Projects"
+              data={projectData}
+              DetailsComponent={ProjectDetails}
+            />
+          }
         />
         <Route path="options" element={<Options />} />
         <Route path="*" element={<Navigate to="/" />} />
