@@ -101,12 +101,6 @@
   image-rendering: pixelated;
 }
 
-.nes-ash.is-medium {
-  transform: scale(0.56);
-  margin-top: -24px;
-  margin-bottom: -24px;
-}
-
 @media (min-width: 1024px) {
   .grid:has(> .nes-container.with-title) {
     grid-template-columns: 3fr 2fr;

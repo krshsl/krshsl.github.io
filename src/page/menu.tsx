@@ -40,8 +40,8 @@ export const Menu: React.FC = () => {
           }}
         >
           <div className="flex flex-col items-center justify-center">
-            <i className="nes-ash is-medium"></i>
-            <span className="mt-2">Trainer Card</span>
+            <i className="port-ash"></i>
+            <span className="mt-2">Player</span>
           </div>
         </button>
         <button
