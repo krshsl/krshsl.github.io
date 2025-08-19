@@ -1,3 +1,5 @@
+import useSound from "use-sound";
+import { POP_CLICK } from "../constants/sounds";
 import { type AllOptions } from "../interfaces/options";
 
 type Props = {
@@ -13,6 +15,8 @@ export const OptionSelector: React.FC<Props> = ({
   value,
   onChange,
 }) => {
+  const [pop0] = useSound(POP_CLICK[0]);
+
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
       <p className="w-full md:w-auto">{label}</p>
@@ -25,7 +29,10 @@ export const OptionSelector: React.FC<Props> = ({
             className={`nes-btn mx-2 ${
               value === optionValue ? "is-primary" : ""
             }`}
-            onClick={() => onChange(optionValue)}
+            onClick={() => {
+              pop0();
+              onChange(optionValue);
+            }}
           >
             {optionValue.toUpperCase()}
           </button>

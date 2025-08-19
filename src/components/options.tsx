@@ -58,9 +58,9 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const speedMap: Record<SpeedOptions, number> = {
-    slow: 80,
-    mid: 40,
-    fast: 15,
+    slow: 100,
+    mid: 50,
+    fast: 25,
   };
 
   const getFontClass = (): string => fontMap[options.font];

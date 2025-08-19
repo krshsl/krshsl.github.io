@@ -2,17 +2,32 @@ import type React from "react";
 import type { JSX } from "react";
 import { useBattery } from "@uidotdev/usehooks";
 import { useState, useEffect } from "react";
+import useSound from "use-sound";
+import { CHARGING, MENU_URL } from "../constants/sounds";
 
 const BatteryIcon: React.FC = () => {
   const { loading, charging, level } = useBattery();
   const [isOpen, setIsOpen] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
+  const [chargingOn] = useSound(CHARGING.ON);
+  const [chargingOff] = useSound(CHARGING.OFF);
+  const [play, { stop }] = useSound(MENU_URL);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setIsTouch("ontouchstart" in window || navigator.maxTouchPoints > 0);
     }
   }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      if (charging) {
+        chargingOn();
+      } else {
+        chargingOff();
+      }
+    }
+  }, [loading, charging]);
 
   const bars = Math.ceil((!loading && level ? level : 1) * 3);
 
@@ -38,10 +53,24 @@ const BatteryIcon: React.FC = () => {
     </g>
   );
 
+  const toggleSmall = () => {
+    if (!isTouch) {
+      return;
+    }
+
+    if (!isOpen) play();
+    else stop();
+    setIsOpen((prev) => !prev);
+  };
+
   return (
-    <div className="group flex items-center">
+    <div
+      className="group flex items-center"
+      onMouseEnter={() => !isTouch && play()}
+      onMouseLeave={() => !isTouch && stop()}
+    >
       <button
-        onClick={() => isTouch && setIsOpen((prev) => !prev)}
+        onClick={toggleSmall}
         className="!outline-none relative flex items-center"
       >
         <svg
@@ -92,10 +121,7 @@ const BatteryIcon: React.FC = () => {
 
       {isTouch ? (
         isOpen && (
-          <div
-            className="ml-3 text-white mt-1"
-            onClick={() => isTouch && setIsOpen((prev) => !prev)}
-          >
+          <div className="ml-3 text-white mt-1" onClick={toggleSmall}>
             {level ? `${Math.round(level * 100)}%` : "100%"}
           </div>
         )

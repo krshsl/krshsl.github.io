@@ -6,6 +6,8 @@ import type { DexData } from "../interfaces/dexData";
 import { CloseButton } from "../components/closebutton";
 import { EntryList } from "../components/entrylist";
 import { useOptions } from "../provider/options";
+import { BackButton } from "../components/backbutton";
+import { MENU } from "../constants/sounds";
 
 interface DexScreenProps {
   title: string;
@@ -23,21 +25,12 @@ export const DexScreen: React.FC<DexScreenProps> = ({
   const { isSmallScreen } = useOptions();
 
   return (
-    <div
-      className="relative nes-container with-title is-dark is-rounded p-2 md:p-4 bg-pattern-block flex flex-col"
-      style={{ minHeight: "calc(80vh)" }}
-    >
+    <>
       <p className="title">{title}</p>
 
       <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
         {isSmallScreen && selectedItem && (
-          <button
-            type="button"
-            className="nes-btn is-warning m-2.5! top-1 right-15 text-center"
-            onClick={() => setSelectedItem(null)}
-          >
-            &lt;
-          </button>
+          <BackButton onClick={() => setSelectedItem(null)} />
         )}
         <CloseButton onClick={() => navigate("/")} />
       </div>
@@ -73,7 +66,10 @@ export const DexScreen: React.FC<DexScreenProps> = ({
             >
               {selectedItem ? (
                 <>
-                  <CloseButton onClick={() => setSelectedItem(null)} />
+                  <CloseButton
+                    onClick={() => setSelectedItem(null)}
+                    sound={MENU.BACK}
+                  />
                   <DetailsComponent item={selectedItem} />
                 </>
               ) : (
@@ -87,6 +83,6 @@ export const DexScreen: React.FC<DexScreenProps> = ({
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 };

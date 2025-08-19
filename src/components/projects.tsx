@@ -2,10 +2,14 @@ import type React from "react";
 import type { DexData } from "../interfaces/dexData";
 import { ListWriter } from "./listwriter";
 import { Typewriter } from "./typewriter";
+import { POP_CLICK } from "../constants/sounds";
+import useSound from "use-sound";
 
 export const ProjectDetails: React.FC<{
   item: DexData;
 }> = ({ item }) => {
+  const [pop1] = useSound(POP_CLICK[1]);
+
   return (
     <div className="mb-10!">
       <p className="title w-[95%]">{item.name}</p>
@@ -27,6 +31,7 @@ export const ProjectDetails: React.FC<{
               target="_blank"
               rel="noopener noreferrer"
               className="nes-btn is-small"
+              onClick={() => pop1()}
             >
               {item.websiteName || "Live Site"}
             </a>
@@ -37,6 +42,7 @@ export const ProjectDetails: React.FC<{
               target="_blank"
               rel="noopener noreferrer"
               className="nes-btn is-small is-warning"
+              onClick={() => pop1()}
             >
               Repo
             </a>
@@ -47,6 +53,7 @@ export const ProjectDetails: React.FC<{
               target="_blank"
               rel="noopener noreferrer"
               className="nes-btn is-small is-error"
+              onClick={() => pop1()}
             >
               Blog Post
             </a>

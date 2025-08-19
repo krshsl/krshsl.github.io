@@ -1,6 +1,8 @@
 import type React from "react";
 import { useState } from "react";
 import { type AllOptions } from "../interfaces/options";
+import { POP_CLICK } from "../constants/sounds";
+import useSound from "use-sound";
 
 type Props = {
   label: string;
@@ -16,6 +18,8 @@ export const PixelDropdown: React.FC<Props> = ({
   onChange,
 }) => {
   const [open, setOpen] = useState(false);
+  const [pop0] = useSound(POP_CLICK[0]);
+  const [pop1] = useSound(POP_CLICK[1]);
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
@@ -24,7 +28,10 @@ export const PixelDropdown: React.FC<Props> = ({
       <div className="relative w-full">
         <button
           type="button"
-          onClick={() => setOpen((prev) => !prev)}
+          onClick={() => {
+            pop0();
+            setOpen((prev) => !prev);
+          }}
           aria-haspopup="listbox"
           aria-expanded={open}
           className="nes-btn is-primary w-full !flex !items-center !justify-start !text-left relative"
@@ -37,13 +44,18 @@ export const PixelDropdown: React.FC<Props> = ({
         </button>
 
         {open && (
-          <ul role="listbox" className="absolute left-0 top-full w-full z-50">
+          <ul
+            role="listbox"
+            className="absolute left-0 top-full w-full"
+            style={{ zIndex: 9999 }}
+          >
             {options.map((opt) => (
               <li
                 key={opt}
                 role="option"
                 aria-selected={opt === value}
                 onClick={() => {
+                  pop1();
                   onChange(opt);
                   setOpen(false);
                 }}

@@ -18,11 +18,14 @@ import type {
   SpeedOptions,
 } from "../interfaces/options";
 import { useOptions } from "../provider/options";
+import { CLICK } from "../constants/sounds";
+import useSound from "use-sound";
 
 export const Options: React.FC = () => {
   const { options, updateOptions, isSmallScreen } = useOptions();
   const [defaultOptions, setDefault] = useState<OptionsType | null>(null);
   const navigate = useNavigate();
+  const [click] = useSound(CLICK.url, { sprite: CLICK.sprite });
 
   useEffect(() => {
     if (defaultOptions === null) setDefault(options);
@@ -45,11 +48,11 @@ export const Options: React.FC = () => {
   };
 
   return (
-    <div className="relative nes-container with-title is-dark bg-pattern-block">
+    <>
       <p className="title">Options</p>
       <CloseButton onClick={() => handleNavigate(false)} />
 
-      <div className="p-4 pt-10 space-y-8 nes-container is-dark bg-pattern-dotted">
+      <div className="p-4 pt-10 space-y-8 nes-container moving-squares--orange z-10 text-white">
         {isSmallScreen ? (
           <PixelDropdown
             label="TEXT SPEED"
@@ -89,8 +92,8 @@ export const Options: React.FC = () => {
         />
       </div>
 
-      <div className="flex justify-center mt-6">
-        <div className="p-2 nes-container is-dark bg-pattern-dotted w-full">
+      <div className="flex justify-center mt-6 text-white">
+        <div className="p-2 nes-container moving-squares--orange w-full">
           <div className="space-y-4 lg:p-4 mb-[1rem]!">
             <div>
               <p className="text mb-2">Preview:</p>
@@ -106,11 +109,14 @@ export const Options: React.FC = () => {
         <button
           type="button"
           className="nes-btn is-success"
-          onClick={() => handleNavigate(true)}
+          onClick={() => {
+            click({ id: "play" });
+            handleNavigate(true);
+          }}
         >
           Confirm
         </button>
       </div>
-    </div>
+    </>
   );
 };

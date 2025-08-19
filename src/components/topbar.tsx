@@ -1,9 +1,12 @@
 import type React from "react";
 import { useEffect, useState } from "react";
 import BatteryIcon from "./battery";
+import useSound from "use-sound";
+import { POP_CLICK } from "../constants/sounds";
 
 export const TopBar: React.FC = () => {
   const [time, setTime] = useState(new Date());
+  const [pop3] = useSound(POP_CLICK[0]);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 60000);
@@ -20,6 +23,7 @@ export const TopBar: React.FC = () => {
           href="https://www.linkedin.com/in/krshsl"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => pop3()}
         >
           <i className="nes-icon linkedin"></i>
         </a>
@@ -27,10 +31,11 @@ export const TopBar: React.FC = () => {
           href="https://github.com/krshsl"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => pop3()}
         >
           <i className="nes-icon github"></i>
         </a>
-        <a href="mailto:krishna.sl@rutgers.edu">
+        <a href="mailto:krishna.sl@rutgers.edu" onClick={() => pop3()}>
           <i className="nes-icon gmail"></i>
         </a>
         <BatteryIcon />

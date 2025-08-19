@@ -1,19 +1,25 @@
 import type React from "react";
 import { useNavigate } from "react-router";
+import useSound from "use-sound";
+import { MENU } from "../constants/sounds";
 
 export const Menu: React.FC = () => {
   const navigate = useNavigate();
+  const [openMenu] = useSound(MENU.OPEN.url, { sprite: MENU.OPEN.sprite });
+
+  const handleClick = (route: string) => {
+    openMenu({ id: "play" });
+    navigate(route);
+  };
 
   return (
-    <div className="nes-container with-title is-dark bg-pattern-block">
+    <>
       <p className="title">Main Menu</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
         <button
           type="button"
           className="nes-btn is-primary h-24"
-          onClick={() => {
-            navigate("experience");
-          }}
+          onClick={() => handleClick("experience")}
         >
           <div className="flex flex-col items-center justify-center">
             <i className="nes-icon trophy is-medium"></i>
@@ -23,9 +29,7 @@ export const Menu: React.FC = () => {
         <button
           type="button"
           className="nes-btn is-success h-24"
-          onClick={() => {
-            navigate("projects");
-          }}
+          onClick={() => handleClick("projects")}
         >
           <div className="flex flex-col items-center justify-center">
             <i className="nes-icon star is-medium"></i>
@@ -35,9 +39,7 @@ export const Menu: React.FC = () => {
         <button
           type="button"
           className="nes-btn is-warning h-24"
-          onClick={() => {
-            navigate("about");
-          }}
+          onClick={() => handleClick("about")}
         >
           <div className="flex flex-col items-center justify-center">
             <i className="port-ash"></i>
@@ -47,9 +49,7 @@ export const Menu: React.FC = () => {
         <button
           type="button"
           className="nes-btn h-24"
-          onClick={() => {
-            navigate("options");
-          }}
+          onClick={() => handleClick("options")}
         >
           <div className="flex flex-col items-center justify-center">
             <i className="snes-jp-logo is-medium"></i>
@@ -57,6 +57,6 @@ export const Menu: React.FC = () => {
           </div>
         </button>
       </div>
-    </div>
+    </>
   );
 };

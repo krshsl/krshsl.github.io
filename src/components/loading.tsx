@@ -21,7 +21,7 @@ const LoadingScreen: React.FC<{ children: React.ReactNode }> = ({
 
   if (isLoading) {
     return (
-      <div className="fixed inset-0 bg-black flex flex-col items-center justify-center z-[100] bg-pattern-block">
+      <div className="fixed inset-0 flex flex-col items-center justify-center z-[100] bg-pattern-block">
         <i className="nes-pokeball is-large animate-spin-nes"></i>
       </div>
     );
