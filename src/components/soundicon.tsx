@@ -14,19 +14,19 @@ export const SoundIcon: React.FC<{ is_persist?: boolean }> = ({
   const color = is_persist ? "invert" : "";
 
   const toggleMute = () => {
-    updateOptions({ ...options, ismute: !options.ismute }, is_persist);
+    updateOptions({ ...options, mute: !options.mute }, is_persist);
   };
 
   return (
     <button
-      className={`${!is_persist ? "nes-btn" : "outline-none!"} ${options.ismute ? "is-disabled" : "is-warning"}`}
+      className={`${!is_persist ? "nes-btn" : "outline-none!"} ${options.mute ? "is-disabled" : "is-warning"}`}
       onClick={() => {
-        if (options.ismute) enable({ forceSoundEnabled: true });
+        if (options.mute) enable({ forceSoundEnabled: true });
         else disable();
         toggleMute();
       }}
     >
-      {!options.ismute ? (
+      {!options.mute ? (
         <img src={soundOn} alt="Sound On" className={color} width={32} />
       ) : (
         <img src={soundOff} alt="Sound Off" className={color} width={32} />

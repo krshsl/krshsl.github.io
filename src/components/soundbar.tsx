@@ -11,7 +11,7 @@ export const SoundBar: React.FC = () => {
 
   const handleBarClick = (index: number) => {
     const vol = ((index + 1) * 0.1) as VolumeOptions;
-    updateOptions({ ...options, volume: vol, ismute: false }, false);
+    updateOptions({ ...options, volume: vol, mute: false }, false);
     skip({ forceSoundEnabled: true });
   };
 
@@ -23,9 +23,9 @@ export const SoundBar: React.FC = () => {
           <button
             key={index}
             className={`h-8 nes-btn ${isSmallScreen && "scale-x-50 -m-1!"} ${
-              !options.ismute && index < Math.floor(options.volume * 10)
+              !options.mute && index < Math.floor(options.volume * 10)
                 ? "is-warning"
-                : "is-disabled"
+                : "is-disabled nes-pointer!"
             }`}
             onClick={() => handleBarClick(index)}
           />

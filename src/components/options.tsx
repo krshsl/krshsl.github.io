@@ -17,7 +17,7 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
     size: "medium",
     font: "kongtext",
     volume: 0.5,
-    ismute: false,
+    mute: false,
   };
 
   const [options, setOptions] = useState<OptionsType>(() => {

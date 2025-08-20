@@ -12,7 +12,7 @@ export function useAppSound(
 
   return useSound(soundUrl, {
     volume: options.volume * (volume !== undefined ? volume : 1),
-    soundEnabled: !options.ismute,
+    soundEnabled: !options.mute,
     ...extraOptions,
   });
 }

@@ -43,7 +43,7 @@ export const DexScreen: React.FC<DexScreenProps> = ({
                 className="relative w-full flex flex-col nes-container is-dark with-title is-rounded bg-pattern-dotted"
                 style={{ bottom: "1rem" }}
               >
-                <DetailsComponent item={selectedItem} />
+                <DetailsComponent key={selectedItem.id} item={selectedItem} />
               </div>
             ) : (
               <EntryList
@@ -70,7 +70,7 @@ export const DexScreen: React.FC<DexScreenProps> = ({
                     onClick={() => setSelectedItem(null)}
                     sound={MENU.BACK}
                   />
-                  <DetailsComponent item={selectedItem} />
+                  <DetailsComponent key={selectedItem.id} item={selectedItem} />
                 </>
               ) : (
                 <div className="flex items-center justify-center h-full">

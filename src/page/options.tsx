@@ -28,6 +28,7 @@ export const Options: React.FC = () => {
   const [defaultOptions, setDefault] = useState<OptionsType | null>(null);
   const navigate = useNavigate();
   const [click] = useAppSound(CLICK.url, { sprite: CLICK.sprite });
+  const [previewKey, setPreviewKey] = useState(0);
 
   useEffect(() => {
     if (defaultOptions === null) setDefault(options);
@@ -46,6 +47,7 @@ export const Options: React.FC = () => {
     option: OptionKeys,
     value: SpeedOptions | SizeOptions | FontOptions | VolumeOptions,
   ) => {
+    setPreviewKey((prev) => prev + 1);
     updateOptions({ ...options, [option]: value }, false);
   };
 
@@ -105,7 +107,10 @@ export const Options: React.FC = () => {
             <div>
               <p className="text mb-2">Preview:</p>
               <div className="nes-container is-dark is-rounded min-h-[8rem] -m-[1rem]!">
-                <Typewriter text="The quick brown fox jumps over the lazy dog." />
+                <Typewriter
+                  key={previewKey}
+                  text="The quick brown fox jumps over the lazy dog."
+                />
               </div>
             </div>
           </div>

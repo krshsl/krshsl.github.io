@@ -23,15 +23,9 @@ export interface OptionsType {
   size: SizeOptions;
   font: FontOptions;
   volume: VolumeOptions;
-  ismute: boolean;
+  mute: boolean;
 }
-export const OPTION_KEYS = [
-  "speed",
-  "font",
-  "size",
-  "volume",
-  "ismute",
-] as const;
+export const OPTION_KEYS = ["speed", "font", "size", "volume", "mute"] as const;
 export type OptionKeys = (typeof OPTION_KEYS)[number];
 
 export type AllOptions = SpeedOptions | SizeOptions | FontOptions;
