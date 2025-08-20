@@ -2,10 +2,14 @@ import type React from "react";
 import type { DexData } from "../interfaces/dexData";
 import { ListWriter } from "./listwriter";
 import { Typewriter } from "./typewriter";
+import { POP_CLICK } from "../constants/sounds";
+import { useAppSound } from "../hooks/useAppSound";
 
 export const ExperienceDetails: React.FC<{
   item: DexData;
 }> = ({ item }) => {
+  const [pop1] = useAppSound(POP_CLICK[1]);
+
   return (
     <div className="mb-10!">
       <p className="title">{item.company}</p>
@@ -23,6 +27,7 @@ export const ExperienceDetails: React.FC<{
             target="_blank"
             rel="noopener noreferrer"
             className="nes-btn is-small"
+            onClick={() => pop1()}
           >
             Company Website
           </a>

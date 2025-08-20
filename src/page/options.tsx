@@ -5,6 +5,7 @@ import { CloseButton } from "../components/closebutton";
 import { Typewriter } from "../components/typewriter";
 import { PixelDropdown } from "../components/dropdown";
 import { OptionSelector } from "../components/optionselector";
+import { SoundBar } from "../components/soundbar";
 import {
   FONT_OPTIONS,
   SIZE_OPTIONS,
@@ -16,13 +17,17 @@ import type {
   OptionsType,
   SizeOptions,
   SpeedOptions,
+  VolumeOptions,
 } from "../interfaces/options";
 import { useOptions } from "../provider/options";
+import { CLICK } from "../constants/sounds";
+import { useAppSound } from "../hooks/useAppSound";
 
 export const Options: React.FC = () => {
   const { options, updateOptions, isSmallScreen } = useOptions();
   const [defaultOptions, setDefault] = useState<OptionsType | null>(null);
   const navigate = useNavigate();
+  const [click] = useAppSound(CLICK.url, { sprite: CLICK.sprite });
 
   useEffect(() => {
     if (defaultOptions === null) setDefault(options);
@@ -39,17 +44,17 @@ export const Options: React.FC = () => {
 
   const handleOptionChange = (
     option: OptionKeys,
-    value: SpeedOptions | SizeOptions | FontOptions,
+    value: SpeedOptions | SizeOptions | FontOptions | VolumeOptions,
   ) => {
     updateOptions({ ...options, [option]: value }, false);
   };
 
   return (
-    <div className="relative nes-container with-title is-dark bg-pattern-block">
+    <>
       <p className="title">Options</p>
       <CloseButton onClick={() => handleNavigate(false)} />
 
-      <div className="p-4 pt-10 space-y-8 nes-container is-dark bg-pattern-dotted">
+      <div className="p-4 pt-10 space-y-8 nes-container moving-squares--orange z-10 text-white">
         {isSmallScreen ? (
           <PixelDropdown
             label="TEXT SPEED"
@@ -87,10 +92,15 @@ export const Options: React.FC = () => {
           value={options.font}
           onChange={(font) => handleOptionChange("font", font)}
         />
+
+        <div>
+          <p className="text mb-2">SOUND VOLUME</p>
+          <SoundBar />
+        </div>
       </div>
 
-      <div className="flex justify-center mt-6">
-        <div className="p-2 nes-container is-dark bg-pattern-dotted w-full">
+      <div className="flex justify-center mt-6 text-white">
+        <div className="p-2 nes-container moving-squares--orange w-full">
           <div className="space-y-4 lg:p-4 mb-[1rem]!">
             <div>
               <p className="text mb-2">Preview:</p>
@@ -106,11 +116,14 @@ export const Options: React.FC = () => {
         <button
           type="button"
           className="nes-btn is-success"
-          onClick={() => handleNavigate(true)}
+          onClick={() => {
+            click({ id: "play" });
+            handleNavigate(true);
+          }}
         >
           Confirm
         </button>
       </div>
-    </div>
+    </>
   );
 };

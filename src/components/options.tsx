@@ -16,19 +16,24 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
     speed: "mid",
     size: "medium",
     font: "kongtext",
+    volume: 0.5,
+    ismute: false,
   };
 
   const [options, setOptions] = useState<OptionsType>(() => {
     try {
       const savedOptions = localStorage.getItem("pokedexPortfolioOptions");
-      return savedOptions ? JSON.parse(savedOptions) : defaultOptions;
+      if (savedOptions) {
+        const parsed = JSON.parse(savedOptions);
+        return { ...defaultOptions, ...parsed };
+      }
     } catch (error) {
       console.error(
         "Could not parse saved options, returning defaults.",
         error,
       );
-      return defaultOptions;
     }
+    return defaultOptions;
   });
 
   const [isSmall, setIsSmall] = useState<boolean>(false);
@@ -58,19 +63,29 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const speedMap: Record<SpeedOptions, number> = {
-    slow: 80,
-    mid: 40,
-    fast: 15,
+    slow: 100,
+    mid: 50,
+    fast: 25,
   };
 
   const getFontClass = (): string => fontMap[options.font];
   const getScreenClass = (): string => screenMap[options.size];
   const getSpeed = (): number => speedMap[options.speed];
 
+  const toggleMute = () => {
+    setOptions((prev) => ({
+      ...prev,
+      ismute: !prev.ismute,
+    }));
+  };
+
   const updateOptions = (newOptions: OptionsType, persist: boolean) => {
     setOptions(newOptions);
     if (persist) {
-      localStorage.setItem("pokedexPortfolioOptions", JSON.stringify(options));
+      localStorage.setItem(
+        "pokedexPortfolioOptions",
+        JSON.stringify(newOptions),
+      );
     }
   };
 
@@ -81,6 +96,7 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
     getFontClass,
     getScreenClass,
     getSpeed,
+    toggleMute,
   };
 
   return (

@@ -9,7 +9,7 @@ export const About: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative nes-container with-title is-dark is-rounded bg-pattern-block">
+    <>
       <p className="title">TRAINER'S CARD</p>
       <CloseButton
         onClick={() => {
@@ -18,7 +18,7 @@ export const About: React.FC = () => {
       />
       <div className="bg-[#f7941d] p-4 rounded-lg text-black mt-6">
         <div className="flex flex-col sm:flex-row gap-4 items-center">
-          <div className="nes-container is-dark with-title mt-4 bg-pattern-dotted">
+          <div className="nes-container with-title mt-4 moving-squares--orange">
             {/*Copyright Nintendo*/}
             <i className="nes-mario"></i>
           </div>
@@ -33,13 +33,13 @@ export const About: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="nes-container is-dark with-title mt-4 bg-pattern-dotted">
+        <div className="nes-container with-title mt-4 moving-squares--orange">
           <p className="title">Bio</p>
-          <div className="text-sm min-h-[6rem] overflow-y-auto">
+          <div className="text-sm min-h-[6rem] overflow-y-auto text-white">
             <Typewriter text={aboutData.bio} />
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

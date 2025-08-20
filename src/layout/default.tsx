@@ -9,13 +9,15 @@ const Layout: React.FC = () => {
   return (
     <>
       <div
-        className={`${getFontClass()} nes-cursor bg-pattern-dotted min-h-screen min-w-screen flex items-center`}
+        className={`${getFontClass()} bw2-background--orange min-h-screen min-w-screen flex items-center`}
       >
         <TopBar />
         <main
           className={`justify-center mx-auto p-4 pt-20 transition-all duration-500 ${isSmallScreen ? "w-full text-xs!" : getScreenClass()}`}
         >
-          <Outlet />
+          <div className="relative nes-container with-title is-dark is-rounded p-2 md:p-4 isometric-pattern flex flex-col min-h-fit">
+            <Outlet />
+          </div>
         </main>
       </div>
     </>

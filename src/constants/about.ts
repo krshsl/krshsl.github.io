@@ -3,11 +3,11 @@ export const experienceData = [
     id: 1,
     company: "IntegrateBPD",
     role: "Full-Stack Developer Intern",
-    duration: "Sep 2025 – Dec 2025 (Expected)",
+    duration: "Sep 2025 - Dec 2025 (Expected)",
     description: [
       "Developing a full-stack healthcare application to support BPD patients",
       "Built role-based access system with user, moderator, and admin privileges",
-      "Implemented real-time chat support for patient–moderator communication",
+      "Implemented real-time chat support for patient moderator communication",
     ],
     tech: ["React", "Java Spring Boot", "PostgreSQL", "Docker", "AWS"],
     link: "https://integratebpd.com/",
@@ -17,7 +17,7 @@ export const experienceData = [
     id: 2,
     company: "Rutgers University",
     role: "Part-Time Lecturer",
-    duration: "Sep 2024 – Dec 2025 (Anticipated)",
+    duration: "Sep 2024 - Dec 2025 (Anticipated)",
     description: [
       "Taught Systems Programming, Internet Technology, and Intro to AI",
       "Covered networking, cache optimizations, and Bayesian logic",
@@ -31,7 +31,7 @@ export const experienceData = [
     id: 3,
     company: "Zoho Corporation",
     role: "Senior Software Development Engineer",
-    duration: "Oct 2022 – Dec 2023",
+    duration: "Oct 2022 - Dec 2023",
     description: [
       "Led migration of SOAR core logic into a standalone agent",
       "Built a multithreaded task execution system for business logic execution",
@@ -46,7 +46,7 @@ export const experienceData = [
     id: 4,
     company: "Zoho Corporation",
     role: "Software Development Engineer",
-    duration: "Jul 2020 – Oct 2022",
+    duration: "Jul 2020 - Oct 2022",
     description: [
       "Migrated the SNMP framework from Java to C++, achieving a 39x performance boost",
       "Integrated SNMPv3 encryption and authentication to secure log collection",
@@ -60,7 +60,7 @@ export const experienceData = [
     id: 5,
     company: "Zoho Corporation",
     role: "Software Development Engineer - Trainee",
-    duration: "Jan 2020 – Jul 2020",
+    duration: "Jan 2020 - Jul 2020",
     description: [
       "Built a universal HTML-to-PDF converter for product help docs, adopted across teams",
       "Redesigned documentation UI and added search indexing to improve usability",
@@ -83,7 +83,7 @@ export const projectData = [
     ],
     tech: ["React", "NES.css", "SCSS"],
     tags: ["Frontend", "Portfolio"],
-    link: "https://your-portfolio-link.com",
+    link: "https://krshsl.github.io",
     repo: "https://github.com/krshsl",
     icon: "🎮",
   },

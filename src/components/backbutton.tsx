@@ -1,25 +1,24 @@
 import type React from "react";
 import { MENU } from "../constants/sounds";
 import { useAppSound } from "../hooks/useAppSound";
-import type { SOUNDS_TYPE } from "../interfaces/sounds";
 
-export const CloseButton: React.FC<{
+export const BackButton: React.FC<{
   onClick: () => void;
-  sound?: SOUNDS_TYPE;
-}> = ({ onClick, sound = MENU.CLOSE }) => {
+  sound?: { url: string; sprite: { play: number[] } };
+}> = ({ onClick, sound = MENU.BACK }) => {
   const [play] = useAppSound(sound.url, { sprite: sound.sprite });
 
   return (
-    <div className="absolute top-2 right-2 z-40 pt-2">
+    <div className="absolute top-2 right-16 z-50 pt-2">
       <button
         type="button"
-        className="nes-btn is-error"
+        className="nes-btn is-warning"
         onClick={() => {
           play({ id: "play" });
           onClick();
         }}
       >
-        X
+        &lt;
       </button>
     </div>
   );
