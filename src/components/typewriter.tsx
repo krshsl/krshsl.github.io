@@ -11,7 +11,7 @@ type TypewriterProps =
   | { list: string[]; onSkip?: () => void; isSkipped?: boolean };
 
 export const Typewriter: React.FC<TypewriterProps> = (props) => {
-  const { getSpeed, getFontClass, isSmallScreen } = useOptions();
+  const { getSpeed, getFontClass, isSmallScreen, options } = useOptions();
   const [itemIndex, setItemIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
@@ -28,13 +28,10 @@ export const Typewriter: React.FC<TypewriterProps> = (props) => {
     : Object.keys(TYPING.sprite).length;
 
   const [skip] = useAppSound(SKIP_BUTTON);
-  const [playTyping] = useAppSound(
-    TYPING.url,
-    {
-      sprite: TYPING.sprite,
-    },
-    0.4,
-  );
+  const [playTyping] = useAppSound(TYPING.url, {
+    sprite: TYPING.sprite,
+    volume: options.volume * 0.4,
+  });
 
   const redPixelify = getFontClass().includes("pixelify") ? 0.3 : 0;
   const spacingClass = isSmallScreen

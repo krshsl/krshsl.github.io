@@ -6,12 +6,11 @@ type UseSoundOptions = Parameters<typeof useSound>[1];
 export function useAppSound(
   soundUrl: string,
   extraOptions?: Omit<UseSoundOptions, "volume" | "soundEnabled">,
-  volume?: number,
 ) {
   const { options } = useOptions();
 
   return useSound(soundUrl, {
-    volume: options.volume * (volume !== undefined ? volume : 1),
+    volume: options.volume,
     soundEnabled: !options.mute,
     ...extraOptions,
   });
