@@ -200,15 +200,92 @@ export const aboutData = {
   name: "Krishna Sathyamurthy",
   title: "Fullstack AI Engineer",
   bio: `
-  I'm a software developer and graduate student at Rutgers University, graduating in December 2025. I specialize in full-stack engineering, distributed systems, and AI-driven tools. With 4+ years of professional experience at Zoho Corporation and academic projects spanning systems to LLMs, I bring industry-proven engineering and curiosity-driven research together.
+ I'm a software developer and graduate student at Rutgers University, graduating in December 2025. I specialize in full-stack engineering, distributed systems, and developing AI-driven tools. With 4+ years of professional experience at Zoho Corporation and academic projects spanning systems to LLMs, I bring a mix of industry-proven engineering and curiosity-driven research.
 
-  Some highlights:
-    - Migrated a legacy SNMP framework to C++ with a 39x performance boost
-    - Built distributed schedulers, RPC wrappers, and rollback systems for production
-    - Developed a cloud storage platform with AI-powered semantic search (Redis AI Challenge)
-    - Created lightweight frontend apps like Emoji Diary and a retro Pokédex-themed portfolio
-    - Designed and taught undergraduate CS courses covering systems, networking, and AI fundamentals
+ Some highlights:
+  - Migrated a legacy SNMP framework to C++ with a 39x performance boost
+  - Built distributed schedulers, RPC wrappers, and rollback systems for production environments
+  - Developed a cloud storage platform with AI-powered semantic search (Redis AI Challenge)
+  - Created lightweight frontend apps such as Emoji Diary and a retro Pokédex-themed portfolio
+  - Designed and taught undergraduate CS courses on systems, networking, and AI fundamentals
 
-  I'm actively seeking Fulltime Software Engineering Spring 2026 opportunities in full-stack, systems, or AI development, where I can design efficient systems and build intelligent, user-focused products.
-  `,
+ I'm actively seeking full-time Software Engineering opportunities starting Spring 2026 in full-stack, systems, or AI development—roles where I can design efficient systems and build intelligent, user-focused products.
+ `,
+  skills: [
+    {
+      category: "Languages",
+      technologies: ["Python", "Java", "C++", "C", "JavaScript", "SQL"],
+    },
+    {
+      category: "AI & Machine Learning",
+      technologies: [
+        "TensorFlow",
+        "LLMs (LLaMA)",
+        "Semantic Search",
+        "Vector Databases",
+        "NLP",
+      ],
+    },
+    {
+      category: "Full-Stack Development",
+      technologies: [
+        "React",
+        "Java Spring Boot",
+        "FastAPI",
+        "Angular",
+        "Flask",
+        "PostgreSQL",
+        "MongoDB",
+        "MySQL",
+      ],
+    },
+    {
+      category: "Cloud & DevOps",
+      technologies: ["AWS", "Docker", "Vercel", "CI/CD"],
+    },
+    {
+      category: "Systems & Networking",
+      technologies: [
+        "Multithreading",
+        "System Design",
+        "RPC",
+        "Linux Kernel",
+        "Network Security",
+        "SNMP",
+      ],
+    },
+  ],
+  education: [
+    {
+      id: 1,
+      university: "Rutgers University",
+      role: "Master of Science, Computer Science",
+      duration: "Jan 2024 - Dec 2025",
+      gpa: 3.85,
+      description: [
+        "Coursework spanning foundational and advanced topics in computer science.",
+        "Focused on low-level systems, distributed architectures, and performance optimization.",
+        "Explored the integration of AI and machine learning into systems-level projects.",
+        "Collaborated on both team-based and individual projects to gain practical experience.",
+      ],
+      tech: ["C++", "Java", "Python", "Docker", "SQL", "Git"],
+      link: "https://www.cs.rutgers.edu/",
+      icon: "🎓",
+    },
+    {
+      id: 2,
+      university: "Sastra University",
+      role: "Bachelor of Technology, Mechanical Engineering",
+      duration: "Jul 2016 - Jun 2020",
+      gpa: 6.67,
+      description: [
+        "Built a strong foundation in engineering principles and analytical problem-solving.",
+        "Gained early exposure to programming and systems analysis through interdisciplinary projects.",
+      ],
+      link: "https://mech.sastra.edu/",
+      icon: "🎓",
+    },
+  ],
+  resumeLink:
+    "https://drive.google.com/file/d/1H2jlBAXOO7hrbI7Oqa2jblEarVDFSdvP",
 };

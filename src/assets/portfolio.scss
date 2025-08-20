@@ -1,5 +1,6 @@
 @use "nes.css/scss/nes.scss" as *;
 @use "thunder";
+@use "coin";
 
 $cursor-default: url(https://unpkg.com/nes.css@latest/assets/cursor.png);
 $cursor-click: url(https://unpkg.com/nes.css@latest/assets/cursor-click.png);

@@ -2,6 +2,7 @@ export interface DexData {
   id: number;
   name?: string;
   company?: string;
+  university?: string;
   role?: string;
   duration?: string;
   description: string | string[];
@@ -9,6 +10,7 @@ export interface DexData {
   link?: string;
   websiteName?: string;
   repo?: string;
+  gpa?: number;
   post?: string;
   tags?: string[];
   icon: string;
