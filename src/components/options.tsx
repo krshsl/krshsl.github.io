@@ -72,13 +72,6 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
   const getScreenClass = (): string => screenMap[options.size];
   const getSpeed = (): number => speedMap[options.speed];
 
-  const toggleMute = () => {
-    setOptions((prev) => ({
-      ...prev,
-      ismute: !prev.ismute,
-    }));
-  };
-
   const updateOptions = (newOptions: OptionsType, persist: boolean) => {
     setOptions(newOptions);
     if (persist) {
@@ -96,7 +89,6 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
     getFontClass,
     getScreenClass,
     getSpeed,
-    toggleMute,
   };
 
   return (

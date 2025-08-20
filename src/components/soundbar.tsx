@@ -1,15 +1,12 @@
 import React from "react";
 import { useOptions } from "../provider/options";
-import { DISABLE_SOUND, ENABLE_SOUND, SKIP_BUTTON } from "../constants/sounds";
+import { SKIP_BUTTON } from "../constants/sounds";
 import { useAppSound } from "../hooks/useAppSound";
-import soundOn from "../assets/sound-on-svgrepo-com.svg";
-import soundOff from "../assets/sound-off-svgrepo-com.svg";
 import type { VolumeOptions } from "../interfaces/options";
+import { SoundIcon } from "./soundicon";
 
 export const SoundBar: React.FC = () => {
-  const { options, isSmallScreen, toggleMute, updateOptions } = useOptions();
-  const [enable] = useAppSound(ENABLE_SOUND);
-  const [disable] = useAppSound(DISABLE_SOUND);
+  const { options, isSmallScreen, updateOptions } = useOptions();
   const [skip] = useAppSound(SKIP_BUTTON);
 
   const handleBarClick = (index: number) => {
@@ -20,22 +17,7 @@ export const SoundBar: React.FC = () => {
 
   return (
     <div className="flex items-center gap-4">
-      {!isSmallScreen && (
-        <button
-          className={`nes-btn ${options.ismute ? "is-disabled" : "is-warning"}`}
-          onClick={() => {
-            if (options.ismute) enable({ forceSoundEnabled: true });
-            else disable();
-            toggleMute();
-          }}
-        >
-          {!options.ismute ? (
-            <img src={soundOn} alt="Sound On" width={24} />
-          ) : (
-            <img src={soundOff} alt="Sound Off" width={24} />
-          )}
-        </button>
-      )}
+      {!isSmallScreen && <SoundIcon />}
       <div className="flex items-center gap-1">
         {Array.from({ length: 10 }).map((_, index) => (
           <button

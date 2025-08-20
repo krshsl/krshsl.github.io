@@ -65,7 +65,7 @@ const BatteryIcon: React.FC = () => {
 
   return (
     <div
-      className="group flex items-center nes-pointer"
+      className="group flex items-center nes-pointer pb-2"
       onMouseEnter={() => !isTouch && play()}
       onMouseLeave={() => !isTouch && stop()}
     >

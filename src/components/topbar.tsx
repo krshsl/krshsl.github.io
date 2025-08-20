@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import BatteryIcon from "./battery";
 import { POP_CLICK } from "../constants/sounds";
 import { useAppSound } from "../hooks/useAppSound";
+import { SoundIcon } from "./soundicon";
 
 export const TopBar: React.FC = () => {
   const [time, setTime] = useState(new Date());
@@ -38,6 +39,9 @@ export const TopBar: React.FC = () => {
         <a href="mailto:krishna.sl@rutgers.edu" onClick={() => pop3()}>
           <i className="nes-icon gmail"></i>
         </a>
+        <span className="outline-none!">
+          <SoundIcon is_persist={true} />
+        </span>
         <BatteryIcon />
       </div>
     </div>
