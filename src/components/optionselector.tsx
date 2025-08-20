@@ -1,6 +1,6 @@
-import useSound from "use-sound";
 import { POP_CLICK } from "../constants/sounds";
 import { type AllOptions } from "../interfaces/options";
+import { useAppSound } from "../hooks/useAppSound";
 
 type Props = {
   label: string;
@@ -15,7 +15,7 @@ export const OptionSelector: React.FC<Props> = ({
   value,
   onChange,
 }) => {
-  const [pop0] = useSound(POP_CLICK[0]);
+  const [pop0] = useAppSound(POP_CLICK[0]);
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">

@@ -1,19 +1,25 @@
 import type React from "react";
 import { useEffect, useState } from "react";
 import { useOptions } from "../provider/options";
-import useSound from "use-sound";
-import { SKIP, TYPING } from "../constants/sounds";
+import { SKIP_BUTTON, TYPING } from "../constants/sounds";
+import { useAppSound } from "../hooks/useAppSound";
 
 export const Typewriter: React.FC<{ text: string }> = ({ text }) => {
   const { options, getSpeed } = useOptions();
   const [charIndex, setCharIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
+  const sprite_len = TYPING.keys
+    ? TYPING.keys
+    : Object.keys(TYPING.sprite).length;
 
-  const [skip] = useSound(SKIP);
-  const [play] = useSound(TYPING.url, {
-    sprite: TYPING.sprite,
-    volume: 0.5,
-  });
+  const [skip] = useAppSound(SKIP_BUTTON);
+  const [play] = useAppSound(
+    TYPING.url,
+    {
+      sprite: TYPING.sprite,
+    },
+    0.4,
+  );
 
   useEffect(() => {
     setCharIndex(0);
@@ -29,7 +35,7 @@ export const Typewriter: React.FC<{ text: string }> = ({ text }) => {
         if (char === " ") {
           play({ id: "space" });
         } else {
-          const randomKey = Math.floor(Math.random() * TYPING.keys) + 1;
+          const randomKey = Math.floor(Math.random() * sprite_len) + 1;
           play({ id: String(randomKey) });
         }
         setCharIndex((prev) => prev + 1);
@@ -40,7 +46,7 @@ export const Typewriter: React.FC<{ text: string }> = ({ text }) => {
     }, getSpeed());
 
     return () => clearTimeout(timerId);
-  }, [charIndex, isTyping, text, getSpeed, play]);
+  }, [charIndex, isTyping, text, getSpeed, play, sprite_len]);
 
   const handleSkip = () => {
     skip();

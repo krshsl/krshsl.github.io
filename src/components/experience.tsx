@@ -3,12 +3,12 @@ import type { DexData } from "../interfaces/dexData";
 import { ListWriter } from "./listwriter";
 import { Typewriter } from "./typewriter";
 import { POP_CLICK } from "../constants/sounds";
-import useSound from "use-sound";
+import { useAppSound } from "../hooks/useAppSound";
 
 export const ExperienceDetails: React.FC<{
   item: DexData;
 }> = ({ item }) => {
-  const [pop1] = useSound(POP_CLICK[1]);
+  const [pop1] = useAppSound(POP_CLICK[1]);
 
   return (
     <div className="mb-10!">

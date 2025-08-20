@@ -2,7 +2,7 @@ import type React from "react";
 import { useState } from "react";
 import { type AllOptions } from "../interfaces/options";
 import { POP_CLICK } from "../constants/sounds";
-import useSound from "use-sound";
+import { useAppSound } from "../hooks/useAppSound";
 
 type Props = {
   label: string;
@@ -18,14 +18,14 @@ export const PixelDropdown: React.FC<Props> = ({
   onChange,
 }) => {
   const [open, setOpen] = useState(false);
-  const [pop0] = useSound(POP_CLICK[0]);
-  const [pop1] = useSound(POP_CLICK[1]);
+  const [pop0] = useAppSound(POP_CLICK[0]);
+  const [pop1] = useAppSound(POP_CLICK[1]);
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
       <p className="w-full md:w-auto">{label}</p>
 
-      <div className="relative w-full">
+      <div className="relative w-full ">
         <button
           type="button"
           onClick={() => {

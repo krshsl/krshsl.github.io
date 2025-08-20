@@ -5,6 +5,7 @@ import { CloseButton } from "../components/closebutton";
 import { Typewriter } from "../components/typewriter";
 import { PixelDropdown } from "../components/dropdown";
 import { OptionSelector } from "../components/optionselector";
+import { SoundBar } from "../components/soundbar";
 import {
   FONT_OPTIONS,
   SIZE_OPTIONS,
@@ -16,16 +17,17 @@ import type {
   OptionsType,
   SizeOptions,
   SpeedOptions,
+  VolumeOptions,
 } from "../interfaces/options";
 import { useOptions } from "../provider/options";
 import { CLICK } from "../constants/sounds";
-import useSound from "use-sound";
+import { useAppSound } from "../hooks/useAppSound";
 
 export const Options: React.FC = () => {
   const { options, updateOptions, isSmallScreen } = useOptions();
   const [defaultOptions, setDefault] = useState<OptionsType | null>(null);
   const navigate = useNavigate();
-  const [click] = useSound(CLICK.url, { sprite: CLICK.sprite });
+  const [click] = useAppSound(CLICK.url, { sprite: CLICK.sprite });
 
   useEffect(() => {
     if (defaultOptions === null) setDefault(options);
@@ -42,7 +44,7 @@ export const Options: React.FC = () => {
 
   const handleOptionChange = (
     option: OptionKeys,
-    value: SpeedOptions | SizeOptions | FontOptions,
+    value: SpeedOptions | SizeOptions | FontOptions | VolumeOptions,
   ) => {
     updateOptions({ ...options, [option]: value }, false);
   };
@@ -90,6 +92,11 @@ export const Options: React.FC = () => {
           value={options.font}
           onChange={(font) => handleOptionChange("font", font)}
         />
+
+        <div>
+          <p className="text mb-2">SOUND VOLUME</p>
+          <SoundBar />
+        </div>
       </div>
 
       <div className="flex justify-center mt-6 text-white">

@@ -9,6 +9,7 @@ interface OptionsProviderState {
   getFontClass: () => string;
   getScreenClass: () => string;
   getSpeed: () => number;
+  toggleMute: () => void;
 }
 
 export const OptionsProviderContext = createContext<

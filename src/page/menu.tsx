@@ -1,11 +1,11 @@
 import type React from "react";
 import { useNavigate } from "react-router";
-import useSound from "use-sound";
 import { MENU } from "../constants/sounds";
+import { useAppSound } from "../hooks/useAppSound";
 
 export const Menu: React.FC = () => {
   const navigate = useNavigate();
-  const [openMenu] = useSound(MENU.OPEN.url, { sprite: MENU.OPEN.sprite });
+  const [openMenu] = useAppSound(MENU.OPEN.url, { sprite: MENU.OPEN.sprite });
 
   const handleClick = (route: string) => {
     openMenu({ id: "play" });

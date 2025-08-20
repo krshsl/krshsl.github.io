@@ -1,12 +1,12 @@
 import type React from "react";
-import useSound from "use-sound";
 import { MENU } from "../constants/sounds";
+import { useAppSound } from "../hooks/useAppSound";
 
 export const BackButton: React.FC<{
   onClick: () => void;
   sound?: { url: string; sprite: { play: number[] } };
 }> = ({ onClick, sound = MENU.BACK }) => {
-  const [play] = useSound(sound.url, { sprite: sound.sprite });
+  const [play] = useAppSound(sound.url, { sprite: sound.sprite });
 
   return (
     <div className="absolute top-2 right-16 z-50 pt-2">

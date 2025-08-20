@@ -1,8 +1,10 @@
+import type { SOUNDS_TYPE } from "../interfaces/sounds";
+
 const base = (file: string) => `/sounds/${file}`;
 
 export const MENU_URL = base("menu.mp3");
 
-export const MENU = {
+export const MENU: { [key: string]: SOUNDS_TYPE } = {
   OPEN: { url: MENU_URL, sprite: { play: [250, 100] } },
   CLOSE: { url: base("click.wav"), sprite: { play: [0, 400] } },
   BACK: { url: MENU_URL, sprite: { play: [20, 100] } },
@@ -14,11 +16,14 @@ export const CHARGING = {
 };
 
 export const STARTUP = base("start-sound.wav");
-export const CLICK = { url: MENU_URL, sprite: { play: [130, 100] } };
-export const SKIP = base("skip.mp3");
+export const CLICK: SOUNDS_TYPE = {
+  url: MENU_URL,
+  sprite: { play: [130, 100] },
+};
+export const SKIP_BUTTON = base("skip.mp3");
 
 const TYPING_URL = base("typing.wav");
-export const TYPING = {
+export const TYPING: SOUNDS_TYPE = {
   url: TYPING_URL,
   keys: 17,
   sprite: {
@@ -47,3 +52,6 @@ export const TYPING = {
 export const POP_CLICK = Array.from({ length: 4 }, (_, i) =>
   base("pop-click" + i + ".mp3"),
 );
+
+export const ENABLE_SOUND = base("enable-sound.mp3");
+export const DISABLE_SOUND = base("disable-sound.mp3");

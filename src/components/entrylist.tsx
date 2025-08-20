@@ -1,7 +1,7 @@
 import type React from "react";
-import useSound from "use-sound";
 import type { DexData } from "../interfaces/dexData";
 import { POP_CLICK } from "../constants/sounds";
+import { useAppSound } from "../hooks/useAppSound";
 
 interface EntryListProps {
   data: DexData[];
@@ -14,7 +14,7 @@ export const EntryList: React.FC<EntryListProps> = ({
   selectedItem,
   onSelect,
 }) => {
-  const [pop0] = useSound(POP_CLICK[0]);
+  const [pop0] = useAppSound(POP_CLICK[0]);
 
   return (
     <div className="w-full md:w-2/5 h-full overflow-y-auto pl-6 custom-scrollbar">
@@ -28,7 +28,7 @@ export const EntryList: React.FC<EntryListProps> = ({
                 pop0();
                 onSelect(item);
               }}
-              className={`cursor-pointer p-2 nes-btn w-full ${
+              className={`p-2 nes-btn w-full ${
                 isSelected ? "is-primary -translate-x-4" : ""
               } transition-all duration-300 ease-in-out`}
             >

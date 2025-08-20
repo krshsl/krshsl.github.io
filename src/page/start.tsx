@@ -1,11 +1,11 @@
 import type React from "react";
 import { useNavigate } from "react-router-dom";
-import useSound from "use-sound";
 import { STARTUP } from "../constants/sounds";
+import { useAppSound } from "../hooks/useAppSound";
 
 const StartScreen: React.FC<{ onStart: () => void }> = ({ onStart }) => {
   const navigate = useNavigate();
-  const [turnOn, { sound }] = useSound(STARTUP);
+  const [turnOn, { sound }] = useAppSound(STARTUP);
 
   const handleStart = () => {
     if (sound?.context?.state === "suspended") {

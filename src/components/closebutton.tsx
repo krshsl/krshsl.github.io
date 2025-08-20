@@ -1,12 +1,13 @@
 import type React from "react";
-import useSound from "use-sound";
 import { MENU } from "../constants/sounds";
+import { useAppSound } from "../hooks/useAppSound";
+import type { SOUNDS_TYPE } from "../interfaces/sounds";
 
 export const CloseButton: React.FC<{
   onClick: () => void;
-  sound?: { url: string; sprite: { play: number[] } };
+  sound?: SOUNDS_TYPE;
 }> = ({ onClick, sound = MENU.CLOSE }) => {
-  const [play] = useSound(sound.url, { sprite: sound.sprite });
+  const [play] = useAppSound(sound.url, { sprite: sound.sprite });
 
   return (
     <div className="absolute top-2 right-2 z-40 pt-2">
