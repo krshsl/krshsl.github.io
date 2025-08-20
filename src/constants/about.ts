@@ -83,7 +83,7 @@ export const projectData = [
     ],
     tech: ["React", "NES.css", "SCSS"],
     tags: ["Frontend", "Portfolio"],
-    link: "https://your-portfolio-link.com",
+    link: "https://krshsl.github.io",
     repo: "https://github.com/krshsl",
     icon: "🎮",
   },
