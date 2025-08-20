@@ -214,7 +214,16 @@ export const aboutData = {
   skills: [
     {
       category: "Languages",
-      technologies: ["Python", "Java", "C++", "C", "JavaScript", "SQL"],
+      technologies: [
+        "C++",
+        "C",
+        "Python",
+        "Java",
+        "JavaScript",
+        "TypeScript",
+        "SQL",
+        "NoSQL",
+      ],
     },
     {
       category: "AI & Machine Learning",
@@ -237,6 +246,7 @@ export const aboutData = {
         "PostgreSQL",
         "MongoDB",
         "MySQL",
+        "Redis",
       ],
     },
     {
@@ -251,7 +261,6 @@ export const aboutData = {
         "RPC",
         "Linux Kernel",
         "Network Security",
-        "SNMP",
       ],
     },
   ],
@@ -280,7 +289,7 @@ export const aboutData = {
       gpa: 6.67,
       description: [
         "Built a strong foundation in engineering principles and analytical problem-solving.",
-        "Gained early exposure to programming and systems analysis through interdisciplinary projects.",
+        "Gained early exposure to programming and systems analysis through internships.",
       ],
       link: "https://mech.sastra.edu/",
       icon: "🎓",
