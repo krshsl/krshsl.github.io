@@ -30,7 +30,7 @@ const StartScreen: React.FC<{ onStart: () => void }> = ({ onStart }) => {
           className="nes-btn is-success"
           onClick={() => {
             handleStart();
-            navigate("/");
+            navigate("/about");
           }}
         >
           Start

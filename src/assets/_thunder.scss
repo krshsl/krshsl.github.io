@@ -1,8 +1,9 @@
 @use "nes.css/scss/nes.scss" as *;
 
 .nes-thunder-icon {
-  $piskel-colors: (#000000, #FFDE3A, #FFC800, #D6AA0D);
+  $piskel-colors: (#000000, #ffde3a, #ffc800, #d6aa0d);
 
+  // prettier-ignore
   $piskel-map: (
     (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),
     (0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0),

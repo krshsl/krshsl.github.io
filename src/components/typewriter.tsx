@@ -1,19 +1,29 @@
 import type React from "react";
-import { useEffect, useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useOptions } from "../provider/options";
 import { SKIP_BUTTON, TYPING } from "../constants/sounds";
 import { useAppSound } from "../hooks/useAppSound";
 
-export const Typewriter: React.FC<{ text: string }> = ({ text }) => {
-  const { options, getSpeed } = useOptions();
+type Category = { category: string; technologies: string[] };
+type TypewriterProps =
+  | { text: string; onSkip?: () => void; isSkipped?: boolean }
+  | { categories: Category[]; onSkip?: () => void; isSkipped?: boolean }
+  | { list: string[]; onSkip?: () => void; isSkipped?: boolean };
+
+export const Typewriter: React.FC<TypewriterProps> = (props) => {
+  const { getSpeed, isSmallScreen } = useOptions();
+  const [itemIndex, setItemIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
+
+  const { onSkip, isSkipped } = props;
+
   const sprite_len = TYPING.keys
     ? TYPING.keys
     : Object.keys(TYPING.sprite).length;
 
   const [skip] = useAppSound(SKIP_BUTTON);
-  const [play] = useAppSound(
+  const [playTyping] = useAppSound(
     TYPING.url,
     {
       sprite: TYPING.sprite,
@@ -21,42 +31,93 @@ export const Typewriter: React.FC<{ text: string }> = ({ text }) => {
     0.4,
   );
 
+  const spacingClass = isSmallScreen
+    ? "-tracking-[0.5rem]"
+    : "-tracking-[0.75rem]";
+
+  const items = useMemo(() => {
+    if ("text" in props) return [{ text: props.text }];
+    if ("categories" in props)
+      return props.categories.flatMap((cat) => [
+        { text: `${cat.category}: `, className: "nes-text is-success" },
+        { text: cat.technologies.join(" | ") },
+      ]);
+    if ("list" in props) return props.list.map((line) => ({ text: line }));
+    return [];
+  }, [props]);
+
   useEffect(() => {
+    setItemIndex(0);
     setCharIndex(0);
     setIsTyping(true);
-  }, [text, options]);
+  }, [props, getSpeed]);
 
   useEffect(() => {
-    if (!isTyping) return;
+    if (!isTyping || itemIndex >= items.length) return;
 
-    const timerId = setTimeout(() => {
-      if (charIndex < text.length) {
-        const char = text[charIndex];
+    const currentItem = items[itemIndex];
+
+    const timer = setTimeout(() => {
+      if (charIndex < currentItem.text.length) {
+        const char = currentItem.text[charIndex];
         if (char === " ") {
-          play({ id: "space" });
+          playTyping({ id: "space" });
         } else {
           const randomKey = Math.floor(Math.random() * sprite_len) + 1;
-          play({ id: String(randomKey) });
+          playTyping({ id: String(randomKey) });
         }
         setCharIndex((prev) => prev + 1);
+      } else if (itemIndex < items.length - 1) {
+        setItemIndex((prev) => prev + 1);
+        setCharIndex(0);
       } else {
+        playTyping({ id: "end" });
         setIsTyping(false);
-        play({ id: "end" });
       }
     }, getSpeed());
 
-    return () => clearTimeout(timerId);
-  }, [charIndex, isTyping, text, getSpeed, play, sprite_len]);
+    return () => clearTimeout(timer);
+  });
+
+  useEffect(() => {
+    if (isSkipped) {
+      setItemIndex(items.length - 1);
+      setCharIndex(items[items.length - 1]?.text.length || 0);
+      setIsTyping(false);
+    }
+  }, [isSkipped, items]);
 
   const handleSkip = () => {
     skip();
-    setCharIndex(text.length);
-    setIsTyping(false);
+    if (onSkip) {
+      onSkip();
+    } else {
+      setItemIndex(items.length - 1);
+      setCharIndex(items[items.length - 1]?.text.length || 0);
+      setIsTyping(false);
+    }
   };
+
+  if (!items.length) return null;
 
   return (
     <div className="relative whitespace-pre-wrap">
-      <p>{text.slice(0, charIndex)}</p>
+      {items.slice(0, itemIndex).map((item, idx) => (
+        <p key={idx} className={item.className}>
+          {"list" in props ? (
+            <span className={spacingClass}>{"<>"}</span>
+          ) : null}
+          {` ${item.text}`}
+        </p>
+      ))}
+      {itemIndex < items.length && (
+        <p className={items[itemIndex].className}>
+          {"list" in props ? (
+            <span className={spacingClass}>{"<>"}</span>
+          ) : null}
+          {` ${items[itemIndex].text.slice(0, charIndex)}`}
+        </p>
+      )}
       {isTyping && (
         <button
           onClick={handleSkip}

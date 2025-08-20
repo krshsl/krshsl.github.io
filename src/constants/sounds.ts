@@ -55,3 +55,6 @@ export const POP_CLICK = Array.from({ length: 4 }, (_, i) =>
 
 export const ENABLE_SOUND = base("enable-sound.mp3");
 export const DISABLE_SOUND = base("disable-sound.mp3");
+
+export const REGISTER = base("cash-register-fake.wav");
+export const COIN = base("coins-1.wav");

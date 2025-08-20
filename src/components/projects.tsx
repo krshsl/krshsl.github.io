@@ -1,6 +1,5 @@
 import type React from "react";
 import type { DexData } from "../interfaces/dexData";
-import { ListWriter } from "./listwriter";
 import { Typewriter } from "./typewriter";
 import { POP_CLICK } from "../constants/sounds";
 import { useAppSound } from "../hooks/useAppSound";
@@ -61,7 +60,7 @@ export const ProjectDetails: React.FC<{
         </div>
         <div className="nes-container is-dark is-rounded mt-2 min-h-[8rem] -m-4! top-8">
           {Array.isArray(item.description) ? (
-            <ListWriter items={item.description} />
+            <Typewriter list={item.description} />
           ) : (
             <Typewriter text={item.description} />
           )}
