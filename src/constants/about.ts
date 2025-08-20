@@ -197,6 +197,7 @@ export const projectData = [
 ];
 
 export const aboutData = {
+  id: 1,
   name: "Krishna Sathyamurthy",
   title: "Fullstack AI Engineer",
   bio: `

@@ -98,9 +98,12 @@ export const About: React.FC = () => {
               <p className="title">{showSkills ? "Skills" : "Bio"}</p>
               <div className="min-h-[6rem]  text-white text-sm! sm:text-sm!">
                 {showSkills ? (
-                  <Typewriter categories={aboutData.skills} />
+                  <Typewriter
+                    key={aboutData.id}
+                    categories={aboutData.skills}
+                  />
                 ) : (
-                  <Typewriter text={aboutData.bio} />
+                  <Typewriter key={aboutData.id + 1} text={aboutData.bio} />
                 )}
               </div>
             </div>

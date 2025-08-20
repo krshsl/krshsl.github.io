@@ -9,7 +9,7 @@ const Layout: React.FC = () => {
   return (
     <>
       <div
-        className={`${getFontClass()} bw2-background--orange min-h-screen min-w-screen flex items-center`}
+        className={`${getFontClass()} bw2-background--orange min-h-screen min-w-screen flex items-center pb-16!`}
       >
         <TopBar />
         <main

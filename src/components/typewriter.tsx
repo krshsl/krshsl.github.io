@@ -52,18 +52,6 @@ export const Typewriter: React.FC<TypewriterProps> = (props) => {
     return [];
   }, [props]);
 
-  const text = "text" in props ? props.text : undefined;
-  const list = "list" in props ? props.list : undefined;
-  const categories = "categories" in props ? props.categories : undefined;
-
-  useEffect(() => {
-    if (isSkipped !== undefined && !isSkipped) {
-      setItemIndex(0);
-      setCharIndex(0);
-      setIsTyping(true);
-    }
-  }, [text, list, categories, isSkipped]);
-
   useEffect(() => {
     if (!isTyping || itemIndex >= items.length) return;
 
