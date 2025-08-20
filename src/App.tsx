@@ -5,7 +5,7 @@ import { OptionsProvider } from "./components/options";
 import Router from "./router/routes";
 
 import "./App.css";
-import "./assets/portfolio.scss";
+import "./assets/index.scss";
 import LoadingScreen from "./components/loading";
 import StartScreen from "./page/start";
 

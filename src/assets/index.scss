@@ -1,0 +1,42 @@
+@import "portfolio.scss";
+
+$cursor-default: url(https://unpkg.com/nes.css@latest/assets/cursor.png);
+$cursor-click: url(https://unpkg.com/nes.css@latest/assets/cursor-click.png);
+
+home,
+body {
+  cursor: $cursor-default, auto;
+}
+
+button,
+a,
+input,
+label {
+  cursor: $cursor-click, pointer;
+}
+
+.nes-pointer {
+  cursor: $cursor-click, pointer;
+}
+
+#root {
+  background-color: #212529;
+}
+
+.menu-button {
+  @extend .nes-btn;
+  cursor: $cursor-click, pointer;
+
+  &:hover {
+    @extend .is-success;
+  }
+}
+
+.is-disabled {
+  @extend .is-disabled;
+  opacity: 0.5;
+  pointer-events: auto;
+  cursor:
+    url("/disabled-cursor.png") 0 0,
+    not-allowed !important;
+}
