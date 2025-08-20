@@ -53,10 +53,10 @@ export const About: React.FC = () => {
                   <label htmlFor="title_field">TITLE</label>
                   <span id="title_field">{aboutData.title}</span>
                 </div>
-                <div className="flex flex-wrap gap-2 pt-2 items-stretch">
+                <div className="flex flex-wrap gap-2 pt-2 items-stretch text-sm! sm:text-lg!">
                   <button
                     type="button"
-                    className="nes-badge flex-1 text-sm! flex items-center justify-center outline-0! min-w-20"
+                    className="nes-badge flex-1 flex items-center justify-center outline-0! min-w-20"
                     onClick={() => {
                       pop0();
                       setShowSkills(!showSkills);
@@ -68,7 +68,7 @@ export const About: React.FC = () => {
                   </button>
                   <button
                     type="button"
-                    className="nes-badge is-success text-sm! flex-1 flex items-center justify-center outline-0! min-w-30"
+                    className="nes-badge is-success flex-1 flex items-center justify-center outline-0! min-w-30"
                     onClick={() => {
                       pop0();
                       setShowEducation(true);
@@ -82,7 +82,7 @@ export const About: React.FC = () => {
                     href={aboutData.resumeLink}
                     download
                     target="_blank"
-                    className="nes-badge is-warning text-sm! is-icon flex-1 flex items-center justify-center outline-0! min-w-30"
+                    className="nes-badge is-warning is-icon flex-1 flex items-center justify-center outline-0! min-w-30"
                     onClick={() => register()}
                     onMouseEnter={() => coin()}
                   >
@@ -96,7 +96,7 @@ export const About: React.FC = () => {
             </div>
             <div className="nes-container with-title mt-4 moving-squares--orange">
               <p className="title">{showSkills ? "Skills" : "Bio"}</p>
-              <div className="text-sm min-h-[6rem]  text-white">
+              <div className="min-h-[6rem]  text-white text-sm! sm:text-sm!">
                 {showSkills ? (
                   <Typewriter categories={aboutData.skills} />
                 ) : (

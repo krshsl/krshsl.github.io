@@ -1,5 +1,5 @@
 import type React from "react";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useOptions } from "../provider/options";
 import { SKIP_BUTTON, TYPING } from "../constants/sounds";
 import { useAppSound } from "../hooks/useAppSound";
@@ -11,12 +11,17 @@ type TypewriterProps =
   | { list: string[]; onSkip?: () => void; isSkipped?: boolean };
 
 export const Typewriter: React.FC<TypewriterProps> = (props) => {
-  const { getSpeed, isSmallScreen } = useOptions();
+  const { getSpeed, getFontClass, isSmallScreen } = useOptions();
   const [itemIndex, setItemIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
 
   const { onSkip, isSkipped } = props;
+
+  const getSpeedRef = useRef(getSpeed);
+  useEffect(() => {
+    getSpeedRef.current = getSpeed;
+  });
 
   const sprite_len = TYPING.keys
     ? TYPING.keys
@@ -31,9 +36,10 @@ export const Typewriter: React.FC<TypewriterProps> = (props) => {
     0.4,
   );
 
+  const redPixelify = getFontClass().includes("pixelify") ? 0.3 : 0;
   const spacingClass = isSmallScreen
-    ? "-tracking-[0.5rem]"
-    : "-tracking-[0.75rem]";
+    ? `-tracking-[${0.5 - redPixelify}rem]`
+    : `-tracking-[${0.75 - redPixelify}rem]`;
 
   const items = useMemo(() => {
     if ("text" in props) return [{ text: props.text }];
@@ -46,11 +52,17 @@ export const Typewriter: React.FC<TypewriterProps> = (props) => {
     return [];
   }, [props]);
 
+  const text = "text" in props ? props.text : undefined;
+  const list = "list" in props ? props.list : undefined;
+  const categories = "categories" in props ? props.categories : undefined;
+
   useEffect(() => {
-    setItemIndex(0);
-    setCharIndex(0);
-    setIsTyping(true);
-  }, [props, getSpeed]);
+    if (isSkipped !== undefined && !isSkipped) {
+      setItemIndex(0);
+      setCharIndex(0);
+      setIsTyping(true);
+    }
+  }, [text, list, categories, isSkipped]);
 
   useEffect(() => {
     if (!isTyping || itemIndex >= items.length) return;
@@ -74,10 +86,10 @@ export const Typewriter: React.FC<TypewriterProps> = (props) => {
         playTyping({ id: "end" });
         setIsTyping(false);
       }
-    }, getSpeed());
+    }, getSpeedRef.current());
 
     return () => clearTimeout(timer);
-  });
+  }, [charIndex, itemIndex, isTyping, items, playTyping, sprite_len]);
 
   useEffect(() => {
     if (isSkipped) {

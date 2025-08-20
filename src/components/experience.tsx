@@ -7,7 +7,6 @@ import { useAppSound } from "../hooks/useAppSound";
 export const ExperienceDetails: React.FC<{
   item: DexData;
 }> = ({ item }) => {
-  console.log(item);
   const [pop1] = useAppSound(POP_CLICK[1]);
 
   return (
