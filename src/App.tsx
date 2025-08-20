@@ -15,13 +15,19 @@ const App: React.FC = () => {
   return (
     <OptionsProvider>
       <BrowserRouter>
-        {!started ? (
-          <StartScreen onStart={() => setStarted(true)} />
-        ) : (
-          <LoadingScreen>
-            <Router />
-          </LoadingScreen>
-        )}
+        <>
+          {!started ? (
+            <StartScreen onStart={() => setStarted(true)} />
+          ) : (
+            <LoadingScreen>
+              <Router />
+            </LoadingScreen>
+          )}
+          <footer className="text-center text-xs text-gray-400 p-2 fixed bottom-0 w-full bg-[#212529] z-50">
+            Made with <i className="nes-icon is-small heart"></i> by Krishna
+            Sathyamurthy
+          </footer>
+        </>
       </BrowserRouter>
     </OptionsProvider>
   );
