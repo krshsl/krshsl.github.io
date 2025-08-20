@@ -1,6 +1,6 @@
 import type React from "react";
 import { useState } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { OptionsProvider } from "./components/options";
 import Router from "./router/routes";
 
@@ -14,7 +14,7 @@ const App: React.FC = () => {
 
   return (
     <OptionsProvider>
-      <BrowserRouter>
+      <HashRouter>
         <>
           {!started ? (
             <StartScreen onStart={() => setStarted(true)} />
@@ -28,7 +28,7 @@ const App: React.FC = () => {
             Sathyamurthy
           </footer>
         </>
-      </BrowserRouter>
+      </HashRouter>
     </OptionsProvider>
   );
 };
