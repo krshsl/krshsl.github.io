@@ -27,9 +27,9 @@ export const SoundIcon: React.FC<{ is_persist?: boolean }> = ({
       }}
     >
       {!options.ismute ? (
-        <img src={soundOn} alt="Sound On" className={color} width={24} />
+        <img src={soundOn} alt="Sound On" className={color} width={32} />
       ) : (
-        <img src={soundOff} alt="Sound Off" className={color} width={24} />
+        <img src={soundOff} alt="Sound Off" className={color} width={32} />
       )}
     </button>
   );

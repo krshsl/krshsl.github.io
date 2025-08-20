@@ -4,9 +4,11 @@ import { useBattery } from "@uidotdev/usehooks";
 import { useState, useEffect } from "react";
 import { CHARGING, MENU_URL } from "../constants/sounds";
 import { useAppSound } from "../hooks/useAppSound";
+import { useOptions } from "../provider/options";
 
 const BatteryIcon: React.FC = () => {
   const { loading, charging, level } = useBattery();
+  const { isSmallScreen } = useOptions();
   const [isOpen, setIsOpen] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
   const [chargingOn] = useAppSound(CHARGING.ON);
@@ -54,7 +56,7 @@ const BatteryIcon: React.FC = () => {
   );
 
   const toggleSmall = () => {
-    if (!isTouch) {
+    if (!(isTouch || isSmallScreen)) {
       return;
     }
 
@@ -66,8 +68,8 @@ const BatteryIcon: React.FC = () => {
   return (
     <div
       className="group flex items-center nes-pointer pb-2"
-      onMouseEnter={() => !isTouch && play()}
-      onMouseLeave={() => !isTouch && stop()}
+      onMouseEnter={() => !(isTouch || isSmallScreen) && play()}
+      onMouseLeave={() => !(isTouch || isSmallScreen) && stop()}
     >
       <button
         onClick={toggleSmall}
@@ -119,7 +121,7 @@ const BatteryIcon: React.FC = () => {
         )}
       </button>
 
-      {isTouch ? (
+      {isTouch || isSmallScreen ? (
         isOpen && (
           <div className="ml-3 text-white mt-1" onClick={toggleSmall}>
             {level ? `${Math.round(level * 100)}%` : "100%"}

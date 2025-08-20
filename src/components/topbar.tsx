@@ -19,7 +19,7 @@ export const TopBar: React.FC = () => {
       <span>
         {time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
       </span>
-      <div className="flex items-center space-x-4 mr-1">
+      <div className="flex items-center space-x-2 sm:space-x-4 mr-0!">
         <a
           href="https://www.linkedin.com/in/krshsl"
           target="_blank"
@@ -39,10 +39,12 @@ export const TopBar: React.FC = () => {
         <a href="mailto:krishna.sl@rutgers.edu" onClick={() => pop3()}>
           <i className="nes-icon gmail"></i>
         </a>
-        <span className="outline-none!">
+        <div className="outline-none! flex-shrink-0">
           <SoundIcon is_persist={true} />
-        </span>
-        <BatteryIcon />
+        </div>
+        <div className="flex-shrink-0">
+          <BatteryIcon />
+        </div>
       </div>
     </div>
   );
