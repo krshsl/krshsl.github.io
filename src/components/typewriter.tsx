@@ -25,11 +25,10 @@ export const Typewriter: React.FC<TypewriterProps> = (props) => {
 
   const sprite_len = TYPING.keys
     ? TYPING.keys
-    : Object.keys(TYPING.sprite).length;
+    : Object.keys(TYPING.sprites).length;
 
   const [skip] = useAppSound(SKIP_BUTTON);
-  const [playTyping] = useAppSound(TYPING.url, {
-    sprite: TYPING.sprite,
+  const [playTyping] = useAppSound(TYPING, {
     volume: options.volume * 0.4,
   });
 

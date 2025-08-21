@@ -7,7 +7,6 @@ import { CloseButton } from "../components/closebutton";
 import { EntryList } from "../components/entrylist";
 import { useOptions } from "../provider/options";
 import { BackButton } from "../components/backbutton";
-import { MENU } from "../constants/sounds";
 
 interface DexScreenProps {
   title: string;

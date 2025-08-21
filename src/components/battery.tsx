@@ -2,7 +2,7 @@ import type React from "react";
 import type { JSX } from "react";
 import { useBattery } from "@uidotdev/usehooks";
 import { useState, useEffect } from "react";
-import { CHARGING, MENU_URL } from "../constants/sounds";
+import { CHARGING, BATTERY } from "../constants/sounds";
 import { useAppSound } from "../hooks/useAppSound";
 import { useOptions } from "../provider/options";
 
@@ -13,7 +13,7 @@ const BatteryIcon: React.FC = () => {
   const [isTouch, setIsTouch] = useState(false);
   const [chargingOn] = useAppSound(CHARGING.ON);
   const [chargingOff] = useAppSound(CHARGING.OFF);
-  const [play, { stop }] = useAppSound(MENU_URL);
+  const [play, { stop }] = useAppSound(BATTERY);
 
   useEffect(() => {
     if (typeof window !== "undefined") {

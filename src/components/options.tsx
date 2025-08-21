@@ -9,6 +9,8 @@ import {
 } from "../interfaces/options";
 import { OptionsProviderContext } from "../provider/options";
 
+const STORAGE_KEY = "pokedexPortfolioOptions";
+
 export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -22,7 +24,7 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const [options, setOptions] = useState<OptionsType>(() => {
     try {
-      const savedOptions = localStorage.getItem("pokedexPortfolioOptions");
+      const savedOptions = localStorage.getItem(STORAGE_KEY);
       if (savedOptions) {
         const parsed = JSON.parse(savedOptions);
         return { ...defaultOptions, ...parsed };
@@ -75,10 +77,7 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
   const updateOptions = (newOptions: OptionsType, persist: boolean) => {
     setOptions(newOptions);
     if (persist) {
-      localStorage.setItem(
-        "pokedexPortfolioOptions",
-        JSON.stringify(newOptions),
-      );
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newOptions));
     }
   };
 

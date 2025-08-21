@@ -5,13 +5,16 @@ import { OptionsProvider } from "./components/options";
 import "./App.css";
 import "./assets/index.scss";
 import Home from "./layout/home";
+import { SoundTrackerProvider } from "./components/sounds";
 
 const App: React.FC = () => {
   return (
     <OptionsProvider>
-      <HashRouter>
-        <Home />
-      </HashRouter>
+      <SoundTrackerProvider>
+        <HashRouter>
+          <Home />
+        </HashRouter>
+      </SoundTrackerProvider>
     </OptionsProvider>
   );
 };

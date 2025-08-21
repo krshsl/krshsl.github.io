@@ -5,7 +5,7 @@ import { useAppSound } from "../hooks/useAppSound";
 
 export const Menu: React.FC = () => {
   const navigate = useNavigate();
-  const [openMenu] = useAppSound(MENU.OPEN.url, { sprite: MENU.OPEN.sprite });
+  const [openMenu] = useAppSound(MENU.OPEN);
 
   const handleClick = (route: string) => {
     openMenu({ id: "play" });

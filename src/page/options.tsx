@@ -27,7 +27,7 @@ export const Options: React.FC = () => {
   const { options, updateOptions, isSmallScreen } = useOptions();
   const [defaultOptions, setDefault] = useState<OptionsType | null>(null);
   const navigate = useNavigate();
-  const [click] = useAppSound(CLICK.url, { sprite: CLICK.sprite });
+  const [click] = useAppSound(CLICK);
   const [previewKey, setPreviewKey] = useState(0);
 
   useEffect(() => {
