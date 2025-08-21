@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-import useSound from "use-sound";
-import { useOptions } from "../provider/options";
 
 import { FANFARE_THEME } from "../constants/sounds";
 import { SoundTrackerContext } from "../provider/sounds";
@@ -11,8 +9,6 @@ const STORAGE_KEY = "pokedexSoundMap";
 export const SoundTrackerProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { options } = useOptions();
-
   const [completionCount, setCompletionCount] = useState(0);
 
   const [playedState, setPlayedState] = useState<bigint>(() => {
@@ -44,11 +40,6 @@ export const SoundTrackerProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   });
 
-  const [playFanfare] = useSound(FANFARE_THEME.url, {
-    volume: options.volume,
-    soundEnabled: !options.mute,
-  });
-
   const markAsPlayed = useCallback((id: number) => {
     const bit = 1n << BigInt(id - 1);
     setPlayedState((prev) => {
@@ -77,11 +68,10 @@ export const SoundTrackerProvider: React.FC<{ children: React.ReactNode }> = ({
     const isFanFarePlayed = (playedState & fanfareBit) !== 0n;
 
     if (isAllSoundsPlayed && !isFanFarePlayed) {
-      playFanfare();
       markAsPlayed(FANFARE_THEME.id);
       setCompletionCount((prev) => prev + 1);
     }
-  }, [playedState, playFanfare, markAsPlayed]);
+  }, [playedState, markAsPlayed]);
 
   useEffect(() => {
     if (completionCount > 0) {

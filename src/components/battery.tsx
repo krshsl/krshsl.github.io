@@ -1,18 +1,23 @@
 import type React from "react";
 import type { JSX } from "react";
 import { useBattery } from "@uidotdev/usehooks";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { CHARGING, BATTERY } from "../constants/sounds";
 import { useAppSound } from "../hooks/useAppSound";
 import { useOptions } from "../provider/options";
 
 const BatteryIcon: React.FC = () => {
-  const { loading, charging, level } = useBattery();
+  const { loading, charging, level, supported } = useBattery();
   const { isSmallScreen } = useOptions();
   const [isOpen, setIsOpen] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
-  const [chargingOn] = useAppSound(CHARGING.ON);
-  const [chargingOff] = useAppSound(CHARGING.OFF);
+
+  const soundOptions = useMemo(() => {
+    return supported ? {} : { volume: 0 };
+  }, [supported]);
+
+  const [chargingOn] = useAppSound(CHARGING.ON, soundOptions);
+  const [chargingOff] = useAppSound(CHARGING.OFF, soundOptions);
   const [play, { stop }] = useAppSound(BATTERY);
 
   useEffect(() => {
@@ -22,14 +27,21 @@ const BatteryIcon: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (!loading) {
+    if (supported === false) {
+      chargingOn();
+      chargingOff();
+    }
+  }, [supported, chargingOn, chargingOff]);
+
+  useEffect(() => {
+    if (supported && !loading) {
       if (charging) {
         chargingOn();
       } else {
         chargingOff();
       }
     }
-  }, [loading, charging]);
+  }, [supported, loading, charging, chargingOn, chargingOff]);
 
   const bars = Math.ceil((!loading && level ? level : 1) * 3);
 
