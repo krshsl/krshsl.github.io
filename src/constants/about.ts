@@ -7,8 +7,6 @@ export const experienceData = [
     duration: "Sep 2025 - Dec 2025 (Expected)",
     description: [
       "Developing a full-stack healthcare application to support BPD patients",
-      "Built role-based access system with user, moderator, and admin privileges",
-      "Implemented real-time chat support for patient moderator communication",
     ],
     tech: ["React", "Java Spring Boot", "PostgreSQL", "Docker", "AWS"],
     link: "https://integratebpd.com/",
@@ -77,12 +75,14 @@ export const projectData = [
     id: 1,
     name: "Pokédex Portfolio",
     description: [
-      "Personal portfolio styled as a retro Pokédex",
+      "Personal portfolio styled as a Pokédex",
       "Experience and projects presented as Pokédex entries",
       "Navigation modeled after Pokémon game menus",
       "Includes trainer-card style About Me and theme customization options",
+      "Responsive design optimized for desktop and mobile",
+      "Hidden Easter egg achievements that unlock playful surprises",
     ],
-    tech: ["React", "NES.css", "SCSS"],
+    tech: ["React", "NES.css", "SCSS", "Piskel"],
     tags: ["Frontend", "Portfolio"],
     link: "https://krshsl.github.io",
     repo: "https://github.com/krshsl",
@@ -128,7 +128,7 @@ export const projectData = [
       "Built a cooperative scheduler allowing tasks to yield or sleep voluntarily",
       "Extended page fault handling for faster access to contiguous memory pages",
     ],
-    tech: ["C", "Linux", "OS"],
+    tech: ["C", "Linux", "kernel", "OS"],
     tags: [
       "Systems",
       "Kernel",
@@ -192,7 +192,6 @@ export const projectData = [
       "University Project",
       "DBMS",
     ],
-    repo: "https://github.com/markdoughten/auction-website",
     icon: "/pokemons/meowth.png",
   },
 ];
@@ -202,17 +201,17 @@ export const aboutData = {
   name: "Krishna Sathyamurthy",
   title: "Fullstack AI Engineer",
   bio: `
- I'm a software developer and graduate student at Rutgers University, graduating in December 2025. I specialize in full-stack engineering, distributed systems, and developing AI-driven tools. With 4+ years of professional experience at Zoho Corporation and academic projects spanning systems to LLMs, I bring a mix of industry-proven engineering and curiosity-driven research.
+Krishna Sathyamurthy is a software developer and graduate student at Rutgers University, graduating in December 2025. He specializes in full-stack engineering, distributed systems, and developing AI-driven tools. With over 4 years of professional experience at Zoho Corporation and academic projects spanning systems to LLMs, he brings a mix of industry-proven engineering and curiosity-driven research.
 
- Some highlights:
+Some highlights:
   - Migrated a legacy SNMP framework to C++ with a 39x performance boost
   - Built distributed schedulers, RPC wrappers, and rollback systems for production environments
   - Developed a cloud storage platform with AI-powered semantic search (Redis AI Challenge)
-  - Created lightweight frontend apps such as Emoji Diary and a retro Pokédex-themed portfolio
+  - Created lightweight frontend apps such as the one you're currently reading
   - Designed and taught undergraduate CS courses on systems, networking, and AI fundamentals
 
- I'm actively seeking full-time Software Engineering opportunities starting Spring 2026 in full-stack, systems, or AI development—roles where I can design efficient systems and build intelligent, user-focused products.
- `,
+He is actively seeking full-time Software Engineering opportunities starting Spring 2026 in full-stack, systems, or AI development—roles where he can design efficient systems and build intelligent, user-focused products.
+  `,
   skills: [
     {
       category: "Languages",
@@ -232,8 +231,8 @@ export const aboutData = {
       technologies: [
         "TensorFlow",
         "LLMs (LLaMA)",
-        "Semantic Search",
-        "Vector Databases",
+        "Semantic Search (FAISS, embeddings)",
+        "Vector Databases (Redis, MongoDB)",
         "NLP",
       ],
     },
@@ -248,19 +247,24 @@ export const aboutData = {
         "PostgreSQL",
         "MongoDB",
         "MySQL",
-        "Redis",
+        "Redis (caching & AI)",
       ],
     },
     {
       category: "Cloud & DevOps",
-      technologies: ["AWS", "Docker", "Vercel", "CI/CD"],
+      technologies: [
+        "AWS (EC2, Cognito)",
+        "Docker (docker & docker-compose)",
+        "Vercel",
+        "CI/CD",
+      ],
     },
     {
       category: "Systems & Networking",
       technologies: [
         "Multithreading",
         "System Design",
-        "RPC",
+        "RPC (Linux SSH, Windows APIs)",
         "Linux Kernel",
         "Network Security",
       ],
