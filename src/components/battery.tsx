@@ -41,7 +41,7 @@ const BatteryIcon: React.FC = () => {
         chargingOff();
       }
     }
-  }, [supported, loading, charging, chargingOn, chargingOff]);
+  }, [charging]);
 
   const bars = Math.ceil((!loading && level ? level : 1) * 3);
 
