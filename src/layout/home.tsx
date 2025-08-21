@@ -1,5 +1,5 @@
 import type React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Router from "../router/routes";
 
 import LoadingScreen from "../components/loading";
@@ -15,6 +15,23 @@ const Home: React.FC = () => {
 
   const [isOverlayVisible, setIsOverlayVisible] = useState(false);
   const [lastSeenCount, setLastSeenCount] = useState(completionCount);
+  const [overrideCount, setOverrideCount] = useState<number | null>(null);
+
+  const triggerFanfare = useCallback((count: number) => {
+    if (typeof count !== "number" || count < 1) {
+      console.error("Please provide a positive number to triggerFanfare.");
+      return;
+    }
+    setOverrideCount(count);
+    setIsOverlayVisible(true);
+  }, []);
+
+  useEffect(() => {
+    window.triggerFanfare = triggerFanfare;
+    return () => {
+      delete window.triggerFanfare;
+    };
+  }, [triggerFanfare]);
 
   useEffect(() => {
     if (completionCount > 0 && completionCount > lastSeenCount) {
@@ -23,12 +40,17 @@ const Home: React.FC = () => {
     }
   }, [completionCount, lastSeenCount]);
 
+  const handleDismiss = () => {
+    setIsOverlayVisible(false);
+    setOverrideCount(null);
+  };
+
   return (
     <div className={getFontClass()}>
       {isOverlayVisible && (
         <Fanfare
-          completionCount={completionCount}
-          onDismiss={() => setIsOverlayVisible(false)}
+          completionCount={overrideCount ?? completionCount}
+          onDismiss={handleDismiss}
         />
       )}
       {!started ? (
