@@ -66,10 +66,9 @@ export const DexScreen: React.FC<DexScreenProps> = ({
             >
               {selectedItem ? (
                 <>
-                  <CloseButton
-                    onClick={() => setSelectedItem(null)}
-                    sound={MENU.BACK}
-                  />
+                  <div className="absolute -right-12 -top-0">
+                    <BackButton onClick={() => setSelectedItem(null)} />
+                  </div>
                   <DetailsComponent key={selectedItem.id} item={selectedItem} />
                 </>
               ) : (
