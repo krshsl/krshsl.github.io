@@ -4,6 +4,7 @@ export interface DexData {
   company?: string;
   university?: string;
   role?: string;
+  degree?: string;
   duration?: string;
   description: string | string[];
   tech?: string[];

@@ -7,7 +7,6 @@ import { CloseButton } from "../components/closebutton";
 import { EntryList } from "../components/entrylist";
 import { useOptions } from "../provider/options";
 import { BackButton } from "../components/backbutton";
-import { MENU } from "../constants/sounds";
 
 interface DexScreenProps {
   title: string;
@@ -66,10 +65,9 @@ export const DexScreen: React.FC<DexScreenProps> = ({
             >
               {selectedItem ? (
                 <>
-                  <CloseButton
-                    onClick={() => setSelectedItem(null)}
-                    sound={MENU.BACK}
-                  />
+                  <div className="absolute -right-12 -top-0">
+                    <BackButton onClick={() => setSelectedItem(null)} />
+                  </div>
                   <DetailsComponent key={selectedItem.id} item={selectedItem} />
                 </>
               ) : (

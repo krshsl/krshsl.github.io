@@ -4,13 +4,11 @@ import { TopBar } from "../components/topbar";
 import { useOptions } from "../provider/options";
 
 const Layout: React.FC = () => {
-  const { getScreenClass, getFontClass, isSmallScreen } = useOptions();
+  const { getScreenClass, isSmallScreen } = useOptions();
 
   return (
     <>
-      <div
-        className={`${getFontClass()} bw2-background--orange min-h-screen min-w-screen flex items-center`}
-      >
+      <div className="bw2-background--orange min-h-screen min-w-screen flex items-center pb-16!">
         <TopBar />
         <main
           className={`justify-center mx-auto p-4 pt-20 transition-all duration-500 ${isSmallScreen ? "w-full text-xs!" : getScreenClass()}`}

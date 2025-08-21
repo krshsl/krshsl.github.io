@@ -2,43 +2,11 @@
 @use "thunder";
 @use "coin";
 
-$cursor-default: url(https://unpkg.com/nes.css@latest/assets/cursor.png);
-$cursor-click: url(https://unpkg.com/nes.css@latest/assets/cursor-click.png);
-
-home,
-body {
-  cursor: $cursor-default, auto;
-}
-
-button,
-a,
-input,
-label {
-  cursor: $cursor-click, pointer;
-}
-
-.nes-pointer {
-  cursor: $cursor-click, pointer;
-}
-
-.menu-button {
-  @extend .nes-btn;
-  cursor: $cursor-click, pointer;
-
-  &:hover {
-    @extend .is-success;
-  }
-}
-
 .port-ash {
   @extend .nes-ash;
   transform: scale(0.53);
   margin-top: -22px;
   margin-bottom: -26px;
-}
-
-#root {
-  background-color: #212529;
 }
 
 .bw2-background {

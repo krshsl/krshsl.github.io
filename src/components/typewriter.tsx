@@ -11,7 +11,7 @@ type TypewriterProps =
   | { list: string[]; onSkip?: () => void; isSkipped?: boolean };
 
 export const Typewriter: React.FC<TypewriterProps> = (props) => {
-  const { getSpeed, getFontClass, isSmallScreen } = useOptions();
+  const { getSpeed, getFontClass, isSmallScreen, options } = useOptions();
   const [itemIndex, setItemIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
@@ -25,16 +25,12 @@ export const Typewriter: React.FC<TypewriterProps> = (props) => {
 
   const sprite_len = TYPING.keys
     ? TYPING.keys
-    : Object.keys(TYPING.sprite).length;
+    : Object.keys(TYPING.sprites).length;
 
   const [skip] = useAppSound(SKIP_BUTTON);
-  const [playTyping] = useAppSound(
-    TYPING.url,
-    {
-      sprite: TYPING.sprite,
-    },
-    0.4,
-  );
+  const [playTyping] = useAppSound(TYPING, {
+    volume: options.volume * 0.4,
+  });
 
   const redPixelify = getFontClass().includes("pixelify") ? 0.3 : 0;
   const spacingClass = isSmallScreen
@@ -51,18 +47,6 @@ export const Typewriter: React.FC<TypewriterProps> = (props) => {
     if ("list" in props) return props.list.map((line) => ({ text: line }));
     return [];
   }, [props]);
-
-  const text = "text" in props ? props.text : undefined;
-  const list = "list" in props ? props.list : undefined;
-  const categories = "categories" in props ? props.categories : undefined;
-
-  useEffect(() => {
-    if (isSkipped !== undefined && !isSkipped) {
-      setItemIndex(0);
-      setCharIndex(0);
-      setIsTyping(true);
-    }
-  }, [text, list, categories, isSkipped]);
 
   useEffect(() => {
     if (!isTyping || itemIndex >= items.length) return;

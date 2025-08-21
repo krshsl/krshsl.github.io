@@ -13,16 +13,28 @@ export const ProjectDetails: React.FC<{
     <div className="mb-10!">
       <p className="title w-[95%]">{item.name}</p>
       <div className="p-4 space-y-3 flex-grow">
-        <div className="space-y-2">
-          <p>
-            <span className="nes-text is-success">Tags:</span>{" "}
-            {item.tags?.join(" | ")}
-          </p>
-          <div className="flex flex-wrap gap-1">
-            <span className="nes-text is-success">Tech Stack:</span>{" "}
-            {item.tech?.join(" | ")}
+        <div className="flex w-full items-start -mb-2">
+          <div className="flex-shrink-0 w-1/6 aspect-square flex flex-col justify-center items-center text-center">
+            <img
+              src={item.icon}
+              alt={item.university}
+              className="w-3/4 h-3/4 object-contain"
+            />
+          </div>
+          <div className="flex-grow w-5/6 flex flex-col items-start text-left pl-2">
+            <div className="space-y-2">
+              <p>
+                <span className="nes-text is-success">Tags:</span>{" "}
+                {item.tags?.join(" | ")}
+              </p>
+              <div className="flex flex-wrap gap-1">
+                <span className="nes-text is-success">Tech Stack:</span>{" "}
+                {item.tech?.join(" | ")}
+              </div>
+            </div>
           </div>
         </div>
+
         <div className="flex flex-wrap gap-2 pt-2">
           {!!item.link && (
             <a

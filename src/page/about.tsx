@@ -8,6 +8,7 @@ import { Typewriter } from "../components/typewriter";
 import { UniversityDetails } from "../components/university";
 import { useAppSound } from "../hooks/useAppSound";
 import { COIN, REGISTER, POP_CLICK } from "../constants/sounds";
+import { BackButton } from "../components/backbutton";
 
 export const About: React.FC = () => {
   const navigate = useNavigate();
@@ -23,12 +24,14 @@ export const About: React.FC = () => {
       {showEducation ? (
         <div className="nes-container with-title is-dark is-rounded p-4">
           <p className="title">Education</p>
-          <CloseButton
-            onClick={() => {
-              pop0();
-              setShowEducation(false);
-            }}
-          />
+          <div className="absolute -right-12 -top-0">
+            <BackButton
+              onClick={() => {
+                pop0();
+                setShowEducation(false);
+              }}
+            />
+          </div>
           <UniversityDetails items={aboutData.education} />
         </div>
       ) : (
@@ -98,9 +101,12 @@ export const About: React.FC = () => {
               <p className="title">{showSkills ? "Skills" : "Bio"}</p>
               <div className="min-h-[6rem]  text-white text-sm! sm:text-sm!">
                 {showSkills ? (
-                  <Typewriter categories={aboutData.skills} />
+                  <Typewriter
+                    key={aboutData.id}
+                    categories={aboutData.skills}
+                  />
                 ) : (
-                  <Typewriter text={aboutData.bio} />
+                  <Typewriter key={aboutData.id + 1} text={aboutData.bio} />
                 )}
               </div>
             </div>

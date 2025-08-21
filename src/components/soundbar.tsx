@@ -25,7 +25,7 @@ export const SoundBar: React.FC = () => {
             className={`h-8 nes-btn ${isSmallScreen && "scale-x-50 -m-1!"} ${
               !options.mute && index < Math.floor(options.volume * 10)
                 ? "is-warning"
-                : "is-disabled nes-pointer!"
+                : "is-disabled"
             }`}
             onClick={() => handleBarClick(index)}
           />

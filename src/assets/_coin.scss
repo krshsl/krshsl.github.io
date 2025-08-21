@@ -66,18 +66,18 @@ $icon-coin-3: (
 // prettier-ignore
 $icon-coin-4: (
   (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
+  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
+  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
+  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
   (0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0),
+  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
+  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
+  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
+  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
+  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
+  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
+  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
   (0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0),
-  (0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0),
-  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
-  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
-  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
-  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
-  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
-  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
-  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
-  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
-  (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0),
   (0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0),
   (0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0),
   (0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0)
@@ -114,27 +114,27 @@ $icon-coin-1-rev: (
     @include nes.pixelize($size, $icon-coin-2, $icon-coin-colors);
   }
   25% {
-    transform: translateY(-15px);
+    transform: translateY(-13.5px);
     @include nes.pixelize($size, $icon-coin-3, $icon-coin-colors);
   }
   37.5% {
-    transform: translateY(-20px);
+    transform: translateY(-17px);
     @include nes.pixelize($size, $icon-coin-4, $icon-coin-colors);
   }
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-20px);
     @include nes.pixelize($size, $icon-coin-1-rev, $icon-coin-colors);
   }
   62.5% {
-    transform: translateY(-10px);
+    transform: translateY(-20px);
     @include nes.pixelize($size, $icon-coin-2, $icon-coin-colors);
   }
   75% {
-    transform: translateY(0);
+    transform: translateY(-14px);
     @include nes.pixelize($size, $icon-coin-3, $icon-coin-colors);
   }
   87.5% {
-    transform: translateY(0);
+    transform: translateY(-7px);
     @include nes.pixelize($size, $icon-coin-4, $icon-coin-colors);
   }
   100% {

@@ -1,3 +1,4 @@
+/* Copyright Nintendo - all pokemon icons */
 export const experienceData = [
   {
     id: 1,
@@ -11,7 +12,7 @@ export const experienceData = [
     ],
     tech: ["React", "Java Spring Boot", "PostgreSQL", "Docker", "AWS"],
     link: "https://integratebpd.com/",
-    icon: "💼",
+    icon: "/pokemons/ralts.png",
   },
   {
     id: 2,
@@ -25,7 +26,7 @@ export const experienceData = [
     ],
     tech: ["C", "Python", "Networks", "AI Fundamentals"],
     link: "https://www.cs.rutgers.edu/",
-    icon: "🎓",
+    icon: "/pokemons/bulbasaur.png",
   },
   {
     id: 3,
@@ -40,7 +41,7 @@ export const experienceData = [
     ],
     tech: ["C++", "Java", "Multithreading", "RPC", "System Design"],
     link: "https://www.zohocorp.com/",
-    icon: "💼",
+    icon: "/pokemons/charizard.png",
   },
   {
     id: 4,
@@ -54,7 +55,7 @@ export const experienceData = [
     ],
     tech: ["C++", "SNMP", "Network Security", "Ember.JS", "Java Apache Tomcat"],
     link: "https://www.zohocorp.com/",
-    icon: "💼",
+    icon: "/pokemons/charmeleon.png",
   },
   {
     id: 5,
@@ -67,14 +68,14 @@ export const experienceData = [
     ],
     tech: ["Java", "Search Indexing", "Frontend UI"],
     link: "https://www.zohocorp.com/",
-    icon: "💼",
+    icon: "/pokemons/charmander.png",
   },
 ];
 
 export const projectData = [
   {
     id: 1,
-    name: "Pokédex Portfolio (Current Website)",
+    name: "Pokédex Portfolio",
     description: [
       "Personal portfolio styled as a retro Pokédex",
       "Experience and projects presented as Pokédex entries",
@@ -85,7 +86,7 @@ export const projectData = [
     tags: ["Frontend", "Portfolio"],
     link: "https://krshsl.github.io",
     repo: "https://github.com/krshsl",
-    icon: "🎮",
+    icon: "/pokemons/mew.png",
   },
   {
     id: 2,
@@ -103,7 +104,7 @@ export const projectData = [
     websiteName: "Smart Doc Finder",
     repo: "https://github.com/krshsl/smart-doc-finder",
     post: "https://dev.to/pujasridhar/what-if-your-cloud-storage-had-wings-2j4h",
-    icon: "🗂️",
+    icon: "/pokemons/dratini.png",
   },
   {
     id: 3,
@@ -118,7 +119,7 @@ export const projectData = [
     tags: ["Frontend", "Lightweight", "UX/UI"],
     link: "https://emodiary.vercel.app/",
     repo: "https://github.com/krshsl/emo_diary",
-    icon: "📓",
+    icon: "/pokemons/ditto.png",
   },
   {
     id: 4,
@@ -136,7 +137,7 @@ export const projectData = [
       "Advanced OS",
     ],
     repo: "https://github.com/krshsl/cs519-sp25",
-    icon: "👾",
+    icon: "/pokemons/porygon.png",
   },
   {
     id: 5,
@@ -150,7 +151,7 @@ export const projectData = [
     tech: ["Python", "LLaMA", "Fireworks AI"],
     tags: ["AI", "LLM", "Team Project", "University Project", "Advanced DBMS"],
     repo: "https://github.com/krshsl/sql_to_text",
-    icon: "📝",
+    icon: "/pokemons/magnemite.png",
   },
   {
     id: 6,
@@ -171,7 +172,7 @@ export const projectData = [
       "Ubiquitous Computing",
     ],
     repo: "https://github.com/krshsl/incident_prediction",
-    icon: "🚦",
+    icon: "/pokemons/mr-mime.png",
   },
   {
     id: 7,
@@ -192,11 +193,12 @@ export const projectData = [
       "DBMS",
     ],
     repo: "https://github.com/markdoughten/auction-website",
-    icon: "☀️",
+    icon: "/pokemons/meowth.png",
   },
 ];
 
 export const aboutData = {
+  id: 1,
   name: "Krishna Sathyamurthy",
   title: "Fullstack AI Engineer",
   bio: `
@@ -268,7 +270,7 @@ export const aboutData = {
     {
       id: 1,
       university: "Rutgers University",
-      role: "Master of Science, Computer Science",
+      degree: "Master of Science, Computer Science",
       duration: "Jan 2024 - Dec 2025",
       gpa: 3.85,
       description: [
@@ -279,12 +281,12 @@ export const aboutData = {
       ],
       tech: ["C++", "Java", "Python", "Docker", "SQL", "Git"],
       link: "https://www.cs.rutgers.edu/",
-      icon: "🎓",
+      icon: "/pokemons/kadabra.png",
     },
     {
       id: 2,
       university: "Sastra University",
-      role: "Bachelor of Technology, Mechanical Engineering",
+      degree: "Bachelor of Technology, Mechanical Engineering",
       duration: "Jul 2016 - Jun 2020",
       gpa: 6.67,
       description: [
@@ -292,7 +294,7 @@ export const aboutData = {
         "Gained early exposure to programming and systems analysis through internships.",
       ],
       link: "https://mech.sastra.edu/",
-      icon: "🎓",
+      icon: "/pokemons/abra.png",
     },
   ],
   resumeLink:

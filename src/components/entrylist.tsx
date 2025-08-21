@@ -34,7 +34,7 @@ export const EntryList: React.FC<EntryListProps> = ({
             >
               <div className="flex w-full items-start">
                 <div className="flex-shrink-0 w-1/6 flex justify-center items-center h-full pt-1">
-                  <span className="text-2xl pixelated-image">{item.icon}</span>
+                  <img src={item.icon} />
                 </div>
                 <div className="flex-grow w-5/6 flex flex-col items-start text-left pl-2">
                   <span>{item.name || item.company}</span>

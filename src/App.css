@@ -9,14 +9,14 @@
 .font-vt323 {
   font-family: "VT323", monospace;
   font-size: 2rem;
-  line-height: 0.8 !important;
-  transform: scaleY(0.9);
+  line-height: 0.82 !important;
   transform-origin: top;
 }
 
 .font-pixelify-sans {
   font-family: "Pixelify Sans", sans-serif;
   font-size: 1.5rem;
+  line-height: 0.96 !important;
 }
 
 .font-silkscreen {
