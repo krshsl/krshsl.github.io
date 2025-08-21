@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useSound from "use-sound";
 import { useOptions } from "../provider/options";
-import { ALL_SOUNDS_BITMAP } from "../constants/soundsManifest";
+
 import { FANFARE_THEME } from "../constants/sounds";
 import { SoundTrackerContext } from "../provider/sounds";
+import { ALL_SOUNDS_BITMAP } from "../constants/soundsmanifest";
 
 const STORAGE_KEY = "pokedexSoundMap";
 
