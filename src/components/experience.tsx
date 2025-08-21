@@ -13,15 +13,27 @@ export const ExperienceDetails: React.FC<{
     <div className="mb-10!">
       <p className="title">{item.company}</p>
       <div className="p-4 space-y-3 flex-grow">
-        <p>
-          <span className="nes-text is-success">Duration:</span> {item.duration}
-        </p>
-        {item.tech && (
-          <p>
-            <span className="nes-text is-success">Tech:</span>{" "}
-            {item.tech.join(", ")}
-          </p>
-        )}
+        <div className="flex w-full items-start -mb-2">
+          <div className="flex-shrink-0 w-1/6 aspect-square flex flex-col justify-center items-center text-center">
+            <img
+              src={item.icon}
+              alt={item.university}
+              className="w-3/4 h-3/4 object-contain"
+            />
+          </div>
+          <div className="flex-grow w-5/6 flex flex-col items-start text-left pl-2">
+            <p>
+              <span className="nes-text is-success">Duration:</span>{" "}
+              {item.duration}
+            </p>
+            {item.tech && (
+              <p>
+                <span className="nes-text is-success">Tech:</span>{" "}
+                {item.tech.join(", ")}
+              </p>
+            )}
+          </div>
+        </div>
         <div className="flex flex-wrap gap-2 pt-2">
           <a
             href={item.link}
