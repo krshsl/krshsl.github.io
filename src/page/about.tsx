@@ -45,7 +45,11 @@ export const About: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 items-center">
               <div className="nes-container with-title mt-4 moving-squares--orange">
                 {/*Copyright Nintendo*/}
-                <i className="nes-mario"></i>
+                <img
+                  src={aboutData.icon}
+                  alt={aboutData.name}
+                  className="max-w-full max-h-full"
+                />
               </div>
               <div className="flex-grow w-full space-y-2">
                 <div className="bg-white py-3 px-2 nes-field flex justify-between items-center gap-8.5">

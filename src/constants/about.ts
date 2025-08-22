@@ -303,4 +303,5 @@ He is actively seeking full-time Software Engineering opportunities starting Spr
   ],
   resumeLink:
     "https://drive.google.com/file/d/1H2jlBAXOO7hrbI7Oqa2jblEarVDFSdvP",
+  icon: "/pokemons/pikachu.png",
 };

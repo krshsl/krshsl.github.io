@@ -26,6 +26,7 @@ export const UniversityDetails: React.FC<{
             <p>{item.university}</p>
             <div className="flex w-full items-start -mb-2">
               <div className="flex-shrink-0 w-1/6 aspect-square flex flex-col justify-center items-center text-center">
+                {/*Copyright Nintendo*/}
                 <img
                   src={item.icon}
                   alt={item.university}
