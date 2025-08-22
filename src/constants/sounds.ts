@@ -57,8 +57,8 @@ export const TYPING: SPRITE_SOUND_COLLECTION = {
 export const POP_CLICK = [
   { url: base("pop-click0.mp3"), id: 30 },
   { url: base("pop-click1.mp3"), id: 31 },
-  // { url: base("pop-click2.mp3"), id: 32 },
-  // { url: base("pop-click3.mp3"), id: 33 },
+  { url: base("pop-click2.mp3"), id: 32 },
+  { url: base("pop-click3.mp3"), id: 33 },
 ];
 
 export const ENABLE_SOUND = { url: base("enable-sound.mp3"), id: 34 };
