@@ -15,6 +15,7 @@ export const ExperienceDetails: React.FC<{
       <div className="p-4 space-y-3 flex-grow">
         <div className="flex w-full items-start -mb-2">
           <div className="flex-shrink-0 w-1/6 aspect-square flex flex-col justify-center items-center text-center">
+            {/*Copyright Nintendo*/}
             <img
               src={item.icon}
               alt={item.university}

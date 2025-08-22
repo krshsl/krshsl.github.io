@@ -29,7 +29,7 @@ export const Typewriter: React.FC<TypewriterProps> = (props) => {
 
   const [skip] = useAppSound(SKIP_BUTTON);
   const [playTyping] = useAppSound(TYPING, {
-    volume: options.volume * 0.4,
+    volume: options.volume * 0.2,
   });
 
   const redPixelify = getFontClass().includes("pixelify") ? 0.3 : 0;
