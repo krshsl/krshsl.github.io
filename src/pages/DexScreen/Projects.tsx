@@ -13,7 +13,7 @@ export const ProjectDetails: React.FC<{
     <div className="mb-10!">
       <p className="title w-[95%]">{item.name}</p>
       <div className="p-4 space-y-3 flex-grow">
-        <div className="flex w-full items-start -mb-2">
+        <div className="flex w-full items-start">
           <div className="flex-shrink-0 sm:w-2/6 md:w-1/6 aspect-square flex flex-col justify-center items-center text-center">
             {/*Copyright Nintendo*/}
             <img
