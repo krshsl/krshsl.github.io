@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=./#/" />
+    <title>Loading...</title>
+
+    <link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" />
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #333;
+        background-image:
+          linear-gradient(45deg, #4a4a4a 25%, transparent 25%),
+          linear-gradient(-45deg, #4a4a4a 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #4a4a4a 75%),
+          linear-gradient(-45deg, transparent 75%, #4a4a4a 75%);
+        background-size: 20px 20px;
+      }
+
+      @keyframes spin-nes {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .animate-spin-nes {
+        animation: spin-nes 1.5s linear infinite;
+      }
+
+      .nes-pokeball {
+        font-size: 5rem;
+      }
+    </style>
+
+    <script>
+      window.location.href = "./#/";
+    </script>
+  </head>
+  <body>
+    <i class="nes-pokeball animate-spin-nes"></i>
+  </body>
+</html>

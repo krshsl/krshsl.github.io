@@ -1,20 +1,20 @@
 import type React from "react";
 import { HashRouter } from "react-router-dom";
-import { OptionsProvider } from "./components/options";
 
 import "./App.css";
-import "./assets/index.scss";
-import Home from "./layout/home";
-import { SoundTrackerProvider } from "./components/sounds";
+import "./assets/styles/index.scss";
+import { SoundsTrackerProvider } from "./core/context/sounds-provider";
+import { OptionsProvider } from "./core/context/options-provider";
+import Home from "./components/layout/Home";
 
 const App: React.FC = () => {
   return (
     <OptionsProvider>
-      <SoundTrackerProvider>
+      <SoundsTrackerProvider>
         <HashRouter>
           <Home />
         </HashRouter>
-      </SoundTrackerProvider>
+      </SoundsTrackerProvider>
     </OptionsProvider>
   );
 };
