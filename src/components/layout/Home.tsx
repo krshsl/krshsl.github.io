@@ -1,55 +1,23 @@
 import type React from "react";
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import { useOptions } from "../../core/context/options";
-import { useSoundTracker } from "../../core/context/sounds";
 import LoadingScreen from "./Loading";
 import Router from "../../core/Routes";
 import Fanfare from "../features/FanFare";
 import StartScreen from "../../pages/Start";
+import { useAchievements } from "../../core/hooks/use-achievements";
 
 const Home: React.FC = () => {
   const [started, setStarted] = useState(false);
   const { getFontClass } = useOptions();
-  const { completionCount } = useSoundTracker();
-
-  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
-  const [lastSeenCount, setLastSeenCount] = useState(completionCount);
-  const [overrideCount, setOverrideCount] = useState<number | null>(null);
-
-  const triggerFanfare = useCallback((count: number) => {
-    if (typeof count !== "number" || count < 1) {
-      console.error("Please provide a positive number to triggerFanfare.");
-      return;
-    }
-    setOverrideCount(count);
-    setIsOverlayVisible(true);
-  }, []);
-
-  useEffect(() => {
-    window.triggerFanfare = triggerFanfare;
-    return () => {
-      delete window.triggerFanfare;
-    };
-  }, [triggerFanfare]);
-
-  useEffect(() => {
-    if (completionCount > 0 && completionCount > lastSeenCount) {
-      setIsOverlayVisible(true);
-      setLastSeenCount(completionCount);
-    }
-  }, [completionCount, lastSeenCount]);
-
-  const handleDismiss = () => {
-    setIsOverlayVisible(false);
-    setOverrideCount(null);
-  };
+  const { latestAchievement, acknowledgeLatestAchievement } = useAchievements();
 
   return (
     <div className={getFontClass()}>
-      {isOverlayVisible && (
+      {latestAchievement && (
         <Fanfare
-          completionCount={overrideCount ?? completionCount}
-          onDismiss={handleDismiss}
+          achievement={latestAchievement}
+          onAcknowledge={acknowledgeLatestAchievement}
         />
       )}
       {!started ? (

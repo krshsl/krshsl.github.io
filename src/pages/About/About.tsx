@@ -1,5 +1,5 @@
 import type React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAppSound } from "../../core/hooks/use-app-sound";
 import { COIN, POP_CLICK, REGISTER } from "../../core/config/sounds";
@@ -8,8 +8,15 @@ import { UniversityDetails } from "./University";
 import { aboutData } from "../../core/config/about";
 import { CloseButton } from "../../components/ui/icons/CloseButton";
 import { Typewriter } from "../../components/features/TypeWriter";
+import { useAchievements } from "../../core/hooks/use-achievements";
+import { TrackableComponents } from "../../core/types/achievements";
 
 export const About: React.FC = () => {
+  const { markComponentAsVisited } = useAchievements();
+  useEffect(() => {
+    markComponentAsVisited(TrackableComponents.ABOUT);
+  }, [markComponentAsVisited]);
+
   const navigate = useNavigate();
   const [showEducation, setShowEducation] = useState(false);
   const [showSkills, setShowSkills] = useState(false);

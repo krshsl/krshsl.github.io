@@ -1,9 +1,16 @@
 import type React from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { STARTUP } from "../core/config/sounds";
 import { useAppSound } from "../core/hooks/use-app-sound";
+import { useAchievements } from "../core/hooks/use-achievements";
+import { TrackableComponents } from "../core/types/achievements";
 
 const StartScreen: React.FC<{ onStart: () => void }> = ({ onStart }) => {
+  const { markComponentAsVisited } = useAchievements();
+  useEffect(() => {
+    markComponentAsVisited(TrackableComponents.START);
+  }, [markComponentAsVisited]);
   const navigate = useNavigate();
   const [turnOn, { sound }] = useAppSound(STARTUP);
 

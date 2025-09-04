@@ -3,7 +3,6 @@ import { createContext, useContext } from "react";
 interface SoundsTrackerContextType {
   markAsPlayed: (id: number) => void;
   playedState: bigint;
-  completionCount: number;
 }
 
 export const SoundsTrackerContext = createContext<

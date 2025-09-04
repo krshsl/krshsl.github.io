@@ -1,9 +1,17 @@
 import type React from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAppSound } from "../core/hooks/use-app-sound";
 import { MENU } from "../core/config/sounds";
+import { useAchievements } from "../core/hooks/use-achievements";
+import { TrackableComponents } from "../core/types/achievements";
+import { AchievementBadges } from "../components/features/AchievementBadges";
 
 export const Menu: React.FC = () => {
+  const { markComponentAsVisited } = useAchievements();
+  useEffect(() => {
+    markComponentAsVisited(TrackableComponents.MENU);
+  }, [markComponentAsVisited]);
   const navigate = useNavigate();
   const [openMenu] = useAppSound(MENU.OPEN);
 
@@ -13,7 +21,8 @@ export const Menu: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="relative">
+      <AchievementBadges />
       <p className="title">Main Menu</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
         <button
@@ -57,6 +66,6 @@ export const Menu: React.FC = () => {
           </div>
         </button>
       </div>
-    </>
+    </div>
   );
 };

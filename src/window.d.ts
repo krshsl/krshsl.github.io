@@ -1,6 +1,7 @@
 declare global {
   interface Window {
-    triggerFanfare?: (count: number) => void;
+    unlockHackerAchievement?: () => void;
+    unlockAchievement?: (achievementName: string) => void;
   }
 }
 

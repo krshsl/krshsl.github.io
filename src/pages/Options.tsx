@@ -22,8 +22,14 @@ import { PixelDropdown } from "../components/ui/DropDown";
 import { OptionSelector } from "../components/ui/OptionSelector";
 import { SoundBar } from "../components/ui/SoundBar";
 import { Typewriter } from "../components/features/TypeWriter";
+import { useAchievements } from "../core/hooks/use-achievements";
+import { TrackableComponents } from "../core/types/achievements";
 
 export const Options: React.FC = () => {
+  const { markComponentAsVisited } = useAchievements();
+  useEffect(() => {
+    markComponentAsVisited(TrackableComponents.OPTIONS);
+  }, [markComponentAsVisited]);
   const { options, updateOptions, isSmallScreen } = useOptions();
   const [defaultOptions, setDefault] = useState<OptionsType | null>(null);
   const navigate = useNavigate();

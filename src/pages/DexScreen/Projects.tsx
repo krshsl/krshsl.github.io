@@ -1,12 +1,19 @@
 import type React from "react";
+import { useEffect } from "react";
 import type { DexData } from "../../core/types/dex-data";
 import { useAppSound } from "../../core/hooks/use-app-sound";
 import { POP_CLICK } from "../../core/config/sounds";
 import { Typewriter } from "../../components/features/TypeWriter";
+import { useAchievements } from "../../core/hooks/use-achievements";
+import { TrackableComponents } from "../../core/types/achievements";
 
 export const ProjectDetails: React.FC<{
   item: DexData;
 }> = ({ item }) => {
+  const { markComponentAsVisited } = useAchievements();
+  useEffect(() => {
+    markComponentAsVisited(TrackableComponents.PROJECTS);
+  }, [markComponentAsVisited]);
   const [pop1] = useAppSound(POP_CLICK[1]);
 
   return (

@@ -19,7 +19,7 @@ export const PixelDropdown: React.FC<Props> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [pop0] = useAppSound(POP_CLICK[0]);
-  const [pop1] = useAppSound(POP_CLICK[1]);
+  const [pop3] = useAppSound(POP_CLICK[3]);
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
@@ -55,7 +55,7 @@ export const PixelDropdown: React.FC<Props> = ({
                 role="option"
                 aria-selected={opt === value}
                 onClick={() => {
-                  pop1();
+                  pop3();
                   onChange(opt);
                   setOpen(false);
                 }}

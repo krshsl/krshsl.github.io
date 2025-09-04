@@ -2,43 +2,36 @@ import React, { useEffect } from "react";
 import useSound from "use-sound";
 import { FANFARE_THEME } from "../../core/config/sounds";
 import { useOptions } from "../../core/context/options";
+import { Achievement, ACHIEVEMENTS_LIST } from "../../core/types/achievements";
 
 interface FanfareProps {
-  onDismiss: () => void;
-  completionCount: number;
+  achievement: Achievement;
+  onAcknowledge: () => void;
 }
 
-interface Achievement {
-  title: string;
-  description: string;
-  soundUrl: string;
-  className: string;
-}
-
-const getAchievementText = (completionCount: number): Achievement => {
-  switch (completionCount) {
-    case 1:
-      return {
-        title: "Digital Explorist!",
-        description:
-          "That's right, you found the only one. Go ahead, take a screenshot; you've earned the ultimate bragging rights.",
-        soundUrl: FANFARE_THEME.url,
-        className: "moving-squares--orange",
-      };
-    default:
-      return {
-        title: "Hacker Achievement!",
-        description:
-          "Wait... how did you get here? This was supposed to be impossible!",
-        soundUrl: FANFARE_THEME.url,
-        className: "moving-squares--green",
-      };
+const getAchievementDetails = (achievement: Achievement) => {
+  const details = ACHIEVEMENTS_LIST.find((a) => a.type === achievement);
+  if (details) {
+    return {
+      title: details.name,
+      description: details.description,
+      soundUrl: details.soundUrl,
+      className: details.className,
+    };
   }
+
+  return {
+    title: "Achievement?!?!?",
+    description:
+      "Wait... how did you get here? This was supposed to be impossible!",
+    soundUrl: FANFARE_THEME.url,
+    className: "moving-squares--green",
+  };
 };
 
-const Fanfare: React.FC<FanfareProps> = ({ onDismiss, completionCount }) => {
+const Fanfare: React.FC<FanfareProps> = ({ achievement, onAcknowledge }) => {
   const { title, description, soundUrl, className } =
-    getAchievementText(completionCount);
+    getAchievementDetails(achievement);
   const { options } = useOptions();
 
   const [play] = useSound(soundUrl, {
@@ -61,7 +54,7 @@ const Fanfare: React.FC<FanfareProps> = ({ onDismiss, completionCount }) => {
               <p>{description}</p>
             </div>
             <menu className="dialog-menu">
-              <button className="nes-btn is-primary" onClick={onDismiss}>
+              <button className="nes-btn is-primary" onClick={onAcknowledge}>
                 Awesome!
               </button>
             </menu>

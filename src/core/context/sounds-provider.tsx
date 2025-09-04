@@ -1,94 +1,44 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { ALL_SOUNDS_BITMAP } from "../config/sounds-manifest";
 import { FANFARE_THEME } from "../config/sounds";
 import { SoundsTrackerContext } from "./sounds";
-
-const STORAGE_KEY = "pokedexSoundMap";
+import { useAchievements } from "../hooks/use-achievements";
+import { Achievement } from "../types/achievements";
 
 export const SoundsTrackerProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [completionCount, setCompletionCount] = useState(0);
+  const { unlockAchievement, achievements, soundState, setSoundState } =
+    useAchievements();
 
-  const [playedState, setPlayedState] = useState<bigint>(() => {
-    try {
-      const storedMap = window.localStorage.getItem(STORAGE_KEY);
-      const data = storedMap ? JSON.parse(storedMap) : {};
-
-      let currentState = BigInt(data.playedState || "0");
-      const lastTotalBitmap = BigInt(data.lastTotalBitmap || "0");
-
-      setCompletionCount(Number(data.completionCount || 0));
-
-      if (lastTotalBitmap !== ALL_SOUNDS_BITMAP) {
-        const fanfareBit = 1n << BigInt(FANFARE_THEME.id - 1);
-        currentState &= ~fanfareBit;
-
-        const newMap = {
-          playedState: currentState.toString(),
-          lastTotalBitmap: ALL_SOUNDS_BITMAP.toString(),
-          completionCount: data.completionCount || "0",
-        };
-        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(newMap));
-      }
-
-      return currentState;
-    } catch (error) {
-      console.error("Failed to parse sound map from localStorage", error);
-      return 0n;
-    }
-  });
-
-  const markAsPlayed = useCallback((id: number) => {
-    const bit = 1n << BigInt(id - 1);
-    setPlayedState((prev) => {
-      if ((prev & bit) !== 0n) {
-        return prev;
-      }
-      const newState = prev | bit;
-
-      const storedMapJSON = window.localStorage.getItem(STORAGE_KEY);
-      const storedMap = storedMapJSON ? JSON.parse(storedMapJSON) : {};
-
-      const newMap = {
-        ...storedMap,
-        playedState: newState.toString(),
-      };
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(newMap));
-
-      return newState;
-    });
-  }, []);
+  const markAsPlayed = useCallback(
+    (id: number) => {
+      const bit = 1n << BigInt(id - 1);
+      setSoundState((prev) => {
+        if ((prev & bit) !== 0n) {
+          return prev;
+        }
+        return prev | bit;
+      });
+    },
+    [setSoundState],
+  );
 
   useEffect(() => {
     const fanfareBit = 1n << BigInt(FANFARE_THEME.id - 1);
     const targetBitmap = ALL_SOUNDS_BITMAP & ~fanfareBit;
-    const isAllSoundsPlayed = (playedState & targetBitmap) === targetBitmap;
-    const isFanFarePlayed = (playedState & fanfareBit) !== 0n;
+    const isAllSoundsPlayed = (soundState & targetBitmap) === targetBitmap;
+    const hasSonicSeeker =
+      (achievements & Achievement.SONIC_SEEKER) === Achievement.SONIC_SEEKER;
 
-    if (isAllSoundsPlayed && !isFanFarePlayed) {
-      markAsPlayed(FANFARE_THEME.id);
-      setCompletionCount((prev) => prev + 1);
+    if (isAllSoundsPlayed && !hasSonicSeeker) {
+      unlockAchievement(Achievement.SONIC_SEEKER);
     }
-  }, [playedState, markAsPlayed]);
-
-  useEffect(() => {
-    if (completionCount > 0) {
-      const storedMapJSON = window.localStorage.getItem(STORAGE_KEY);
-      const storedMap = storedMapJSON ? JSON.parse(storedMapJSON) : {};
-      if (Number(storedMap.completionCount || 0) !== completionCount) {
-        const newMap = {
-          ...storedMap,
-          completionCount: completionCount.toString(),
-        };
-        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(newMap));
-      }
-    }
-  }, [completionCount]);
+  }, [soundState, achievements, unlockAchievement]);
 
   return (
     <SoundsTrackerContext.Provider
-      value={{ markAsPlayed, playedState, completionCount }}
+      value={{ markAsPlayed, playedState: soundState }}
     >
       {children}
     </SoundsTrackerContext.Provider>
