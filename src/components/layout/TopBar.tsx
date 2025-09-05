@@ -30,7 +30,7 @@ export const TopBar: React.FC = () => {
           rel="noopener noreferrer"
           onClick={() => register()}
         >
-          <i className="nes-icon nes-text-file-icon -mt-1 scale-90"></i>
+          <i className="nes-icon nes-text-file-icon -mt-2 scale-90 pr-2 right-1"></i>
         </a>
         <a
           href="https://www.linkedin.com/in/krshsl"
