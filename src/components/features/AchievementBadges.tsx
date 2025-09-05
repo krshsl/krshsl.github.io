@@ -14,13 +14,11 @@ export const AchievementBadges: React.FC = () => {
           return (
             <div
               key={achievement.type}
-              className="nes-badge is-icon"
+              className="achievement-badge-container relative w-10 h-10"
               onClick={() => showAchievement(achievement.type)}
-              style={{ cursor: "pointer" }}
+              title={achievement.name}
             >
-              <span className="is-success" title={achievement.name}>
-                <i className="nes-icon is-medium star"></i>
-              </span>
+              <div className={`${achievement.badgeClassName} absolute`} />
             </div>
           );
         }

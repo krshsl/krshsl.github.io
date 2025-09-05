@@ -16,7 +16,9 @@ export const ACHIEVEMENTS_LIST = [
     description:
       "Awarded for venturing into every digital nook and cranny of this portfolio.",
     soundUrl: FANFARE_THEME.url,
-    className: "moving-squares--orange",
+    bgClassName: "moving-squares--orange",
+    badgeClassName: "badge-digital-explorist",
+    fanfareBadgeClassName: "badge-digital-explorist top-1 left-3",
   },
   {
     type: Achievement.SONIC_SEEKER,
@@ -24,7 +26,9 @@ export const ACHIEVEMENTS_LIST = [
     description:
       "For the one who has cataloged every beep, boop, and byte of sound.",
     soundUrl: FANFARE_THEME.url,
-    className: "moving-squares--purple",
+    bgClassName: "moving-squares--purple",
+    badgeClassName: "badge-sonic-seeker",
+    fanfareBadgeClassName: "badge-sonic-seeker -top-3 left-4.5",
   },
   {
     type: Achievement.OG_EXPLORIST,
@@ -32,14 +36,18 @@ export const ACHIEVEMENTS_LIST = [
     description:
       "You've been here since the beginning! This badge is for our veteran explorers.",
     soundUrl: FANFARE_THEME.url,
-    className: "moving-squares--blue",
+    bgClassName: "moving-squares--blue",
+    badgeClassName: "badge-og-explorist",
+    fanfareBadgeClassName: "badge-og-explorist -top-2",
   },
   {
     type: Achievement.HACKER,
     name: "Hacker",
-    description: "Wait... how did you get here? Bad actor, tch tch tch!",
+    description: "Wait... how did you get here? Bad actor, tch tch tch.",
     soundUrl: FANFARE_THEME.url,
-    className: "moving-squares--green",
+    bgClassName: "moving-squares--green",
+    badgeClassName: "badge-hacker",
+    fanfareBadgeClassName: "badge-hacker m-12 -top-2 left-3",
   },
 ];
 

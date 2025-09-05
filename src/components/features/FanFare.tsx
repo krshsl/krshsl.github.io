@@ -16,7 +16,8 @@ const getAchievementDetails = (achievement: Achievement) => {
       title: details.name,
       description: details.description,
       soundUrl: details.soundUrl,
-      className: details.className,
+      bgClassName: details.bgClassName,
+      fanfareBadgeClassName: details.fanfareBadgeClassName,
     };
   }
 
@@ -25,12 +26,13 @@ const getAchievementDetails = (achievement: Achievement) => {
     description:
       "Wait... how did you get here? This was supposed to be impossible!",
     soundUrl: FANFARE_THEME.url,
-    className: "moving-squares--green",
+    bgClassName: "moving-squares--green",
+    fanfareBadgeClassName: "badge-hacker",
   };
 };
 
 const Fanfare: React.FC<FanfareProps> = ({ achievement, onAcknowledge }) => {
-  const { title, description, soundUrl, className } =
+  const { title, description, soundUrl, bgClassName, fanfareBadgeClassName } =
     getAchievementDetails(achievement);
   const { options } = useOptions();
 
@@ -45,12 +47,14 @@ const Fanfare: React.FC<FanfareProps> = ({ achievement, onAcknowledge }) => {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[100]">
-      <div className={`${className}  max-w-lg`}>
+      <div className={`${bgClassName} max-w-lg`}>
         <div className="relative nes-dialog is-dark bg-transparent! is-rounded max-w-lg mx-4 -mr-0! -ml-0!">
           <form method="dialog" className="relative z-10">
             <p className="title">{title}</p>
             <div className="flow-root">
-              <i className="nes-octocat animate float-left mr-4 mt-2"></i>
+              <i
+                className={`${fanfareBadgeClassName} scale-[4] float-left m-10`}
+              ></i>
               <p>{description}</p>
             </div>
             <menu className="dialog-menu">
