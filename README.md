@@ -9,4 +9,4 @@ You can start by customizing [`about.ts`](src/core/config/about.ts) to add your 
 
 This project is licensed under the MIT License.
 
-If you use this project, please credit [krshsl](github.com/krshsl).
+If you use this project, please credit [krshsl](https://github.com/krshsl).
