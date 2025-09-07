@@ -12,6 +12,7 @@ import {
   COIN,
   FANFARE_THEME,
   BATTERY,
+  COMPLETED_THEME,
 } from "./sounds";
 
 function calculateCompletionBitmap(): bigint {
@@ -29,6 +30,7 @@ function calculateCompletionBitmap(): bigint {
   addIdToBitmap(REGISTER.id);
   addIdToBitmap(COIN.id);
   addIdToBitmap(BATTERY.id);
+  addIdToBitmap(COMPLETED_THEME.id);
 
   Object.values(MENU).forEach((sound) => addIdToBitmap(sound.id));
   Object.values(CHARGING).forEach((sound) => addIdToBitmap(sound.id));

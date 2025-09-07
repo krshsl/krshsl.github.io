@@ -23,6 +23,7 @@ export const AchievementsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [soundState, setSoundState] = useState<bigint>(0n);
   const [latestAchievement, setLatestAchievement] =
     useState<Achievement | null>(null);
+  const [achievementQueue, setAchievementQueue] = useState<Achievement[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -82,7 +83,7 @@ export const AchievementsProvider: React.FC<{ children: React.ReactNode }> = ({
         return prev;
       }
       const newAchievements = prev | achievement;
-      setLatestAchievement(achievement);
+      showAchievement(achievement);
       return newAchievements;
     });
   }, []);
@@ -134,12 +135,19 @@ export const AchievementsProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [unlockAchievement]);
 
   const acknowledgeLatestAchievement = () => {
+    setAchievementQueue((queue) => queue.slice(1));
     setLatestAchievement(null);
   };
 
   const showAchievement = (achievement: Achievement) => {
-    setLatestAchievement(achievement);
+    setAchievementQueue((queue) => [...queue, achievement]);
   };
+
+  useEffect(() => {
+    if (!latestAchievement && achievementQueue.length > 0) {
+      setLatestAchievement(achievementQueue[0]);
+    }
+  }, [achievementQueue, latestAchievement]);
 
   return (
     <AchievementsContext.Provider

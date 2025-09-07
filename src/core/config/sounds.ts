@@ -3,7 +3,7 @@ import type { SIMPLE_SOUND, SPRITE_SOUND_COLLECTION } from "../types/sounds";
 const base = (file: string) => `/sounds/${file}`;
 
 const MENU_URL = base("menu.mp3");
-export const MENU: { [key: string]: SIMPLE_SOUND } = {
+export const MENU: Record<string, SIMPLE_SOUND> = {
   OPEN: { url: base("menu.mp3"), id: 1, sprite: [250, 100] },
   CLOSE: { url: base("click.wav"), id: 2, sprite: [0, 400] },
   BACK: { url: base("menu.mp3"), id: 3, sprite: [20, 100] },
@@ -66,4 +66,8 @@ export const COIN = { url: base("coins-1.wav"), id: 37 };
 
 export const BATTERY = { url: base("menu.mp3"), id: 38 };
 
+export const COMPLETED_THEME = { url: base("completed.mp3"), id: 39 };
+
+export const PIKACHU_THEME = { url: base("pikachu.mp3"), id: 254 };
+export const PIKACHU_SONG = { url: base("the-pikachu-song.mp3"), id: 255 };
 export const FANFARE_THEME = { url: base("fanfare.mp3"), id: 256 };

@@ -15,10 +15,10 @@ export const OptionsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const defaultOptions: OptionsType = {
-    speed: "mid",
-    size: "medium",
+    speed: "fast",
+    size: "large",
     font: "kongtext",
-    volume: 0.5,
+    volume: 0.3,
     mute: false,
   };
 
