@@ -6,10 +6,9 @@ export const experienceData = [
     role: "Full-Stack Developer Intern",
     duration: "Sep 2025 - Dec 2025 (Expected)",
     description: [
-      "Developing a full-stack healthcare application to support BPD patients",
+      "Developing a full-stack healthcare application to support BPD patients focusing on usability and security",
       "Designed scalable system architecture and OpenAPI specifications, accelerating development sprints by 1–2 weeks",
       "Developed robust database schema and optimized data workflows to support growth and performance",
-      "Enhanced application security by moving JWT logic to the backend and enforcing strict compliance, eliminating XSS vulnerabilities entirely",
     ],
     tech: [
       "React",
