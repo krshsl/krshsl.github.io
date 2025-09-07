@@ -4,12 +4,12 @@ import type { AllOptions } from "../../core/types/options";
 import { POP_CLICK } from "../../core/config/sounds";
 import { useAppSound } from "../../core/hooks/use-app-sound";
 
-type Props = {
+interface Props {
   label: string;
   options: readonly AllOptions[];
   value: AllOptions;
   onChange: (value: AllOptions) => void;
-};
+}
 
 export const PixelDropdown: React.FC<Props> = ({
   label,

@@ -17,14 +17,14 @@ export function useAppSound(
   const { options } = useOptions();
   const { markAsPlayed } = useSoundTracker();
 
-  let spriteMap: { [key: string]: [number, number] } | undefined = undefined;
+  let spriteMap: Record<string, [number, number]> | undefined = undefined;
   if ("sprites" in sound) {
     spriteMap = Object.entries(sound.sprites).reduce(
       (acc, [key, val]) => {
         acc[key] = val.pos;
         return acc;
       },
-      {} as { [key: string]: [number, number] },
+      {} as Record<string, [number, number]>,
     );
   } else if (sound.sprite) {
     spriteMap = { play: sound.sprite };

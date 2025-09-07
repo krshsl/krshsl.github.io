@@ -45,13 +45,13 @@ const BatteryIcon: React.FC = () => {
 
   const bars = Math.ceil((!loading && level ? level : 0) * 3);
 
-  type PixelatedBarProps = {
+  interface PixelatedBarProps {
     x: number;
     y: number;
     width: number;
     height: number;
     fill: string;
-  };
+  }
 
   const PixelatedBar = ({
     x,

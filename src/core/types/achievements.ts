@@ -74,7 +74,7 @@ export const ALL_COMPONENTS_BITMAP = Object.values(TrackableComponents).reduce(
   0,
 );
 
-export type AchievementsContextType = {
+export interface AchievementsContextType {
   achievements: number;
   unlockAchievement: (achievement: Achievement) => void;
   showAchievement: (achievement: Achievement) => void;
@@ -86,4 +86,4 @@ export type AchievementsContextType = {
   componentState: number;
   soundState: bigint;
   setSoundState: React.Dispatch<React.SetStateAction<bigint>>;
-};
+}

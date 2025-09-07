@@ -4,7 +4,7 @@ import { useOptions } from "../../core/context/options";
 import { SKIP_BUTTON, TYPING } from "../../core/config/sounds";
 import { useAppSound } from "../../core/hooks/use-app-sound";
 
-type Category = { category: string; technologies: string[] };
+interface Category { category: string; technologies: string[] }
 type TypewriterProps =
   | { text: string; onSkip?: () => void; isSkipped?: boolean }
   | { categories: Category[]; onSkip?: () => void; isSkipped?: boolean }
