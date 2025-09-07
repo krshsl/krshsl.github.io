@@ -1,4 +1,9 @@
-import { FANFARE_THEME } from "../config/sounds";
+import {
+  COMPLETED_THEME,
+  FANFARE_THEME,
+  PIKACHU_SONG,
+  PIKACHU_THEME,
+} from "../config/sounds";
 
 export const Achievement = {
   DIGITAL_EXPLORIST: 1 << 0,
@@ -15,7 +20,7 @@ export const ACHIEVEMENTS_LIST = [
     name: "Digital Explorist",
     description:
       "Awarded for venturing into every digital nook and cranny of this portfolio.",
-    soundUrl: FANFARE_THEME.url,
+    soundData: COMPLETED_THEME,
     bgClassName: "moving-squares--orange",
     badgeClassName: "badge-digital-explorist",
     fanfareBadgeClassName: "badge-digital-explorist top-1 left-3",
@@ -25,7 +30,7 @@ export const ACHIEVEMENTS_LIST = [
     name: "Sonic Seeker",
     description:
       "For the one who has cataloged every beep, boop, and byte of sound.",
-    soundUrl: FANFARE_THEME.url,
+    soundData: FANFARE_THEME,
     bgClassName: "moving-squares--purple",
     badgeClassName: "badge-sonic-seeker",
     fanfareBadgeClassName: "badge-sonic-seeker -top-3 left-4.5",
@@ -35,7 +40,7 @@ export const ACHIEVEMENTS_LIST = [
     name: "OG Explorist",
     description:
       "You've been here since the beginning! This badge is for our veteran explorers.",
-    soundUrl: FANFARE_THEME.url,
+    soundData: PIKACHU_THEME,
     bgClassName: "moving-squares--blue",
     badgeClassName: "badge-og-explorist",
     fanfareBadgeClassName: "badge-og-explorist -top-2",
@@ -44,7 +49,7 @@ export const ACHIEVEMENTS_LIST = [
     type: Achievement.HACKER,
     name: "Hacker",
     description: "Wait... how did you get here? Bad actor, tch tch tch.",
-    soundUrl: FANFARE_THEME.url,
+    soundData: PIKACHU_SONG,
     bgClassName: "moving-squares--green",
     badgeClassName: "badge-hacker",
     fanfareBadgeClassName: "badge-hacker m-12 -top-2 left-3",

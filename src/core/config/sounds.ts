@@ -66,4 +66,8 @@ export const COIN = { url: base("coins-1.wav"), id: 37 };
 
 export const BATTERY = { url: base("menu.mp3"), id: 38 };
 
+export const COMPLETED_THEME = { url: base("completed.mp3"), id: 39 };
+
+export const PIKACHU_THEME = { url: base("pikachu.mp3"), id: 254 };
+export const PIKACHU_SONG = { url: base("the-pikachu-song.mp3"), id: 255 };
 export const FANFARE_THEME = { url: base("fanfare.mp3"), id: 256 };

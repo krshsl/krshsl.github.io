@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import useSound from "use-sound";
-import { FANFARE_THEME } from "../../core/config/sounds";
-import { useOptions } from "../../core/context/options";
+import { PIKACHU_SONG } from "../../core/config/sounds";
 import { Achievement, ACHIEVEMENTS_LIST } from "../../core/types/achievements";
+import { useAppSound } from "../../core/hooks/use-app-sound";
 
 interface FanfareProps {
   achievement: Achievement;
@@ -15,7 +14,7 @@ const getAchievementDetails = (achievement: Achievement) => {
     return {
       title: details.name,
       description: details.description,
-      soundUrl: details.soundUrl,
+      soundData: details.soundData,
       bgClassName: details.bgClassName,
       fanfareBadgeClassName: details.fanfareBadgeClassName,
     };
@@ -25,21 +24,17 @@ const getAchievementDetails = (achievement: Achievement) => {
     title: "Achievement?!?!?",
     description:
       "Wait... how did you get here? This was supposed to be impossible!",
-    soundUrl: FANFARE_THEME.url,
+    soundData: PIKACHU_SONG,
     bgClassName: "moving-squares--green",
     fanfareBadgeClassName: "badge-hacker",
   };
 };
 
 const Fanfare: React.FC<FanfareProps> = ({ achievement, onAcknowledge }) => {
-  const { title, description, soundUrl, bgClassName, fanfareBadgeClassName } =
+  const { title, description, soundData, bgClassName, fanfareBadgeClassName } =
     getAchievementDetails(achievement);
-  const { options } = useOptions();
 
-  const [play] = useSound(soundUrl, {
-    volume: options.volume,
-    soundEnabled: !options.mute,
-  });
+  const [play] = useAppSound(soundData);
 
   useEffect(() => {
     play();
