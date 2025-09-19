@@ -43,7 +43,7 @@ export const experienceData = [
       "Led migration of SOAR core logic into a standalone agent",
       "Built a multithreaded task execution system for business logic execution",
       "Created an RPC wrapper to simplify protocol usage across internal teams",
-      "Implemented a rollback mechanism to prevent DB corruption during failed upgrades",
+      "Implemented a rollback mechanism to prevent DB corruption by nearly 100% during failed upgrades",
     ],
     tech: ["C++", "Java", "Multithreading", "RPC", "System Design"],
     link: "https://www.zohocorp.com/",
