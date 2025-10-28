@@ -7,7 +7,7 @@ import { Typewriter } from "../../components/features/TypeWriter";
 import { useAchievements } from "../../core/hooks/use-achievements";
 import { TrackableComponents } from "../../core/types/achievements";
 
-export const UniversityDetails: React.FC<{
+export const EducationDetails: React.FC<{
   items: DexData[];
 }> = ({ items }) => {
   const { markComponentAsVisited } = useAchievements();

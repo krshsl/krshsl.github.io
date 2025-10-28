@@ -41,6 +41,18 @@ export const EntryList: React.FC<EntryListProps> = ({
                   {item.role && (
                     <span className="text-xs mt-1 opacity-75">{item.role}</span>
                   )}
+                  <div className="flex max-w-10/12">
+                    {item.tags && (
+                      <span className="text-xs mt-1 opacity-75 overflow-hidden whitespace-nowrap text-clip">
+                        {item.tags.join(", ")}
+                      </span>
+                    )}
+                    {item.tags && (
+                      <span className="flex text-xs mt-1 opacity-75">
+                        {}...
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

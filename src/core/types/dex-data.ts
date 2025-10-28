@@ -1,5 +1,5 @@
 export interface DexData {
-  id: number;
+  id: string;
   name?: string;
   company?: string;
   university?: string;

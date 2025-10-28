@@ -1,7 +1,7 @@
 /* Copyright Nintendo - all pokemon icons */
 export const experienceData = [
   {
-    id: 1,
+    id: "integratebpd-full-stack-intern",
     company: "IntegrateBPD",
     role: "Full-Stack Developer Intern",
     duration: "Sep 2025 - Dec 2025 (Expected)",
@@ -21,7 +21,7 @@ export const experienceData = [
     icon: "/pokemons/ralts.png",
   },
   {
-    id: 2,
+    id: "rutgers-part-time-lecturer",
     company: "Rutgers University",
     role: "Part-Time Lecturer",
     duration: "Sep 2024 - Dec 2025 (Anticipated)",
@@ -35,7 +35,7 @@ export const experienceData = [
     icon: "/pokemons/bulbasaur.png",
   },
   {
-    id: 3,
+    id: "zoho-senior-sde",
     company: "Zoho Corporation",
     role: "Senior Software Development Engineer",
     duration: "Oct 2022 - Dec 2023",
@@ -50,7 +50,7 @@ export const experienceData = [
     icon: "/pokemons/charizard.png",
   },
   {
-    id: 4,
+    id: "zoho-sde",
     company: "Zoho Corporation",
     role: "Software Development Engineer",
     duration: "Jul 2020 - Oct 2022",
@@ -64,7 +64,7 @@ export const experienceData = [
     icon: "/pokemons/charmeleon.png",
   },
   {
-    id: 5,
+    id: "zoho-sde-trainee",
     company: "Zoho Corporation",
     role: "Software Development Engineer - Trainee",
     duration: "Jan 2020 - Jul 2020",
@@ -80,7 +80,56 @@ export const experienceData = [
 
 export const projectData = [
   {
-    id: 1,
+    id: "coco",
+    name: "Coco - Hospitalist Assistant",
+    description: [
+      "Created a multiplatform (Web, iOS, Android) Assistant for Hospitalist",
+      "Included a human in the loop feature to reduce hallucinations",
+      "Triggered AI notifications and alerts",
+    ],
+    tech: [
+      "AWS - Lambda, S3, EC2, Cognito, Bedrock, DynamoDB",
+      "React Native",
+      "Node.js",
+      "ExpoGO",
+      "RAG",
+    ],
+    tags: [
+      "AI",
+      "Chat App",
+      "Hackathon",
+      "Healthcare",
+      "Full-Stack",
+      "Real-Time",
+    ],
+    repo: "https://github.com/krshsl/coatXcode",
+    icon: "/pokemons/chansey.png",
+  },
+  {
+    id: "praxis-ai-interview",
+    name: "Praxis - AI Interview Agent",
+    description: [
+      "Launched an AI interview platform enabling users to practice and improve interview skills with real-time feedback, resulting in a 40% faster preparation cycle for job seekers.",
+      "Integrated Gemini conversational AI and ElevenLabs TTS, achieving 95%+ user satisfaction for natural, interactive interview experiences.",
+      "Implemented dynamic, role-driven scoring and personalized summaries, increasing actionable feedback and user engagement by 30%.",
+      "Enabled live coding assessments with instant AI evaluation, reducing manual review time for technical interviews by 50%.",
+      "Deployed a scalable Go backend and React frontend with WebSocket support, handling hundreds of concurrent sessions with zero downtime.",
+    ],
+    tech: [
+      "Go",
+      "React",
+      "WebSocket",
+      "Gemini (Google AI)",
+      "ElevenLabs",
+      "Docker",
+      "Supabase",
+    ],
+    tags: ["AI", "Interview", "Voice", "Full-Stack", "Real-Time", "Hackathon"],
+    repo: "https://github.com/krshsl/praxis",
+    icon: "/pokemons/whimsur.png",
+  },
+  {
+    id: "pokedex-portfolio",
     name: "Pokédex Portfolio",
     description: [
       "Personal portfolio styled as a Pokédex",
@@ -97,7 +146,7 @@ export const projectData = [
     icon: "/pokemons/mew.png",
   },
   {
-    id: 2,
+    id: "smart-doc-finder",
     name: "Smart Doc Finder",
     description: [
       "Developed a cloud storage app with AI-powered semantic search, similar to Google Drive",
@@ -123,7 +172,7 @@ export const projectData = [
     icon: "/pokemons/dratini.png",
   },
   {
-    id: 3,
+    id: "emoji-diary",
     name: "Emoji Diary",
     description: [
       "Frontend-only React app for mood tracking and journaling",
@@ -138,7 +187,7 @@ export const projectData = [
     icon: "/pokemons/ditto.png",
   },
   {
-    id: 4,
+    id: "kernel-development-projects",
     name: "Kernel Development Projects",
     description: [
       "Built a cooperative scheduler allowing tasks to yield or sleep voluntarily",
@@ -156,7 +205,7 @@ export const projectData = [
     icon: "/pokemons/porygon.png",
   },
   {
-    id: 5,
+    id: "sql-to-text-generator",
     name: "SQL-to-Text Generator",
     description: [
       "Team project using Fireworks AI with LLaMA to convert SQL queries to natural language",
@@ -170,7 +219,7 @@ export const projectData = [
     icon: "/pokemons/magnemite.png",
   },
   {
-    id: 6,
+    id: "traffic-incident-prediction",
     name: "Traffic Incident Prediction",
     description: [
       "Predicted traffic incidents using public datasets enriched with climate and sunlight data",
@@ -191,7 +240,7 @@ export const projectData = [
     icon: "/pokemons/mr-mime.png",
   },
   {
-    id: 7,
+    id: "enterprise-auction-system",
     name: "Enterprise Auction System",
     description: [
       "Built a full-stack marketplace with Angular, Flask, and MySQL",
@@ -213,7 +262,7 @@ export const projectData = [
 ];
 
 export const aboutData = {
-  id: 1,
+  id: "krishna-sathyamurthy",
   name: "Krishna Sathyamurthy",
   title: "Fullstack AI Engineer",
   bio: `
@@ -234,6 +283,8 @@ He is actively seeking full-time Software Engineering opportunities starting Spr
       technologies: [
         "C++",
         "C",
+        "Rust",
+        "Go",
         "Python",
         "Java",
         "JavaScript",
@@ -259,6 +310,7 @@ He is actively seeking full-time Software Engineering opportunities starting Spr
         "Java Spring Boot",
         "FastAPI",
         "Angular",
+        "NodeJS",
         "Flask",
         "PostgreSQL",
         "MongoDB",
@@ -269,7 +321,7 @@ He is actively seeking full-time Software Engineering opportunities starting Spr
     {
       category: "Cloud & DevOps",
       technologies: [
-        "AWS (EC2, Lambda, Cognito)",
+        "AWS (EC2, Lambda, Cognito, Bedrock, S3)",
         "Docker (docker & docker-compose)",
         "Vercel",
         "CI/CD",
@@ -288,7 +340,7 @@ He is actively seeking full-time Software Engineering opportunities starting Spr
   ],
   education: [
     {
-      id: 1,
+      id: "rutgers-ms-cs",
       university: "Rutgers University",
       degree: "Master of Science, Computer Science",
       duration: "Jan 2024 - Dec 2025",
@@ -299,12 +351,12 @@ He is actively seeking full-time Software Engineering opportunities starting Spr
         "Explored the integration of AI and machine learning into systems-level projects.",
         "Collaborated on both team-based and individual projects to gain practical experience.",
       ],
-      tech: ["C++", "Java", "Python", "Docker", "SQL", "Git"],
+      tech: ["C", "Rust", "Python", "Docker", "SQL", "NoSQL", "Git"],
       link: "https://www.cs.rutgers.edu/",
       icon: "/pokemons/kadabra.png",
     },
     {
-      id: 2,
+      id: "sastra-btech-mech",
       university: "Sastra University",
       degree: "Bachelor of Technology, Mechanical Engineering",
       duration: "Jul 2016 - Jun 2020",

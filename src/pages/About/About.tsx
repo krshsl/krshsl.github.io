@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { useAppSound } from "../../core/hooks/use-app-sound";
 import { COIN, POP_CLICK, REGISTER } from "../../core/config/sounds";
 import { BackButton } from "../../components/ui/icons/BackButton";
-import { UniversityDetails } from "./University";
+import { EducationDetails } from "./Education";
 import { aboutData } from "../../core/config/about";
 import { CloseButton } from "../../components/ui/icons/CloseButton";
 import { Typewriter } from "../../components/features/TypeWriter";
@@ -28,7 +28,7 @@ export const About: React.FC = () => {
     <>
       <p className="title">PLAYER INFO</p>
       {showEducation ? (
-        <div className="nes-container with-title is-dark is-rounded p-4">
+        <div className="nes-container with-title is-dark is-rounded p-4 bg-pattern-dotted">
           <p className="title">Education</p>
           <div className="absolute -right-12 -top-0">
             <BackButton
@@ -38,7 +38,7 @@ export const About: React.FC = () => {
               }}
             />
           </div>
-          <UniversityDetails items={aboutData.education} />
+          <EducationDetails items={aboutData.education} />
         </div>
       ) : (
         <>
@@ -47,7 +47,7 @@ export const About: React.FC = () => {
               navigate("/");
             }}
           />
-          <div className="bg-[#f7941d] p-4 rounded-lg text-black mt-6">
+          <div className="bg-[#e87800] p-4 rounded-lg text-black mt-6">
             <div className="flex flex-col sm:flex-row gap-4 items-center">
               <div className="nes-container with-title mt-4 moving-squares--orange">
                 {/*Copyright Nintendo*/}
