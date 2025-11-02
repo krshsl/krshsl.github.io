@@ -62,7 +62,7 @@ export const EducationDetails: React.FC<{
             </div>
             <div className="flex flex-wrap gap-2 pt-2">
               <a
-                href={item.link}
+                href={item.live}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nes-btn is-small"

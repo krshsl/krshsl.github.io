@@ -44,9 +44,9 @@ export const ProjectDetails: React.FC<{
         </div>
 
         <div className="flex flex-wrap gap-2 pt-2">
-          {!!item.link && (
+          {!!item.live && (
             <a
-              href={item.link}
+              href={item.live}
               target="_blank"
               rel="noopener noreferrer"
               className="nes-btn is-small"
@@ -66,17 +66,21 @@ export const ProjectDetails: React.FC<{
               Repo
             </a>
           )}
-          {!!item.post && (
-            <a
-              href={item.post}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nes-btn is-small is-error"
-              onClick={() => pop1()}
-            >
-              Blog Post
-            </a>
-          )}
+          {!!item.links &&
+            Object.entries(item.links).map(([key, value]) =>
+              typeof value === "string" && value.trim() ? (
+                <a
+                  key={key}
+                  href={value}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nes-btn is-small is-error"
+                  onClick={() => pop1()}
+                >
+                  {key}
+                </a>
+              ) : null,
+            )}
         </div>
         <div className="nes-container is-dark is-rounded mt-2 min-h-[8rem] -m-4! top-8">
           {Array.isArray(item.description) ? (

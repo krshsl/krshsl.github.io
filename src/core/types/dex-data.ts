@@ -8,11 +8,11 @@ export interface DexData {
   duration?: string;
   description: string | string[];
   tech?: string[];
-  link?: string;
+  live?: string;
   websiteName?: string;
   repo?: string;
   gpa?: number;
-  post?: string;
+  links?: Record<string, unknown>;
   tags?: string[];
   icon: string;
 }
