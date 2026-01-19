@@ -1,7 +1,7 @@
 {
   "name": "Pokédex Portfolio",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://krshsl.github.io/",
   "type": "module",
   "scripts": {
