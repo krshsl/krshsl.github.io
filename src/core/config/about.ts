@@ -119,6 +119,25 @@ export const experienceData = [
 
 export const projectData = [
   {
+    id: "compilers-project",
+    name: "Compilers Project",
+    summary:
+      "Boosted runtime efficiency by engineering a custom Rust backend that generates AMD64 assembly, implementing register allocation to minimize expensive stack operations.",
+    description: [
+      "Boosted runtime efficiency by engineering a custom Rust backend that generates AMD64 assembly, implementing register allocation to minimize expensive stack operations.",
+      "Enabled hardware-agnostic execution by developing a translator that converts ASTs into linear LLVM IR, utilizing topological sorting to ensure dependency-free instruction scheduling.",
+      "Supported complex control flow (loops, conditionals) by building a Control Flow Graph (CFG) engine that optimizes program logic into efficient Basic Blocks.",
+    ],
+    tech: ["Rust", "LLVM", "Assembly"],
+    tags: [
+      "Compilers",
+      "Low-Level",
+      "University Project",
+    ],
+    repo: "https://github.com/krshsl/compilers_projects",
+    icon: "/pokemons/klink.png",
+  },
+  {
     id: "coco",
     name: "Coco - Hospitalist Assistant",
     summary:
